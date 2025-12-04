@@ -8,11 +8,16 @@ if (!defined('IS_VITE_DEVELOPMENT')) {
     define('IS_VITE_DEVELOPMENT', (defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'local'));
 }
 
+// Define Vite Server URL
+if (!defined('VITE_SERVER')) {
+    define('VITE_SERVER', 'http://localhost:5173');
+}
+
 function goodshep_enqueue_scripts() {
     if (IS_VITE_DEVELOPMENT) {
         // Development: Vite Dev Server (HMR)
-        wp_enqueue_script('vite-client', 'http://localhost:5173/@vite/client', [], null, false);
-        wp_enqueue_script('goodshep-main', 'http://localhost:5173/src/main.js', ['jquery'], null, false);
+        wp_enqueue_script('vite-client', VITE_SERVER . '/@vite/client', [], null, false);
+        wp_enqueue_script('goodshep-main', VITE_SERVER . '/src/main.js', ['jquery'], null, false);
     } else {
         // Production: Built Assets
         wp_enqueue_style(

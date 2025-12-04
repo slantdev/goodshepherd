@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2025-11-29
+
+### Fixed
+- **Dev Server:** Enabled network access (`host: true`) and configured CORS to allow external device testing (e.g., mobile).
+- **Header Template:** Refactored `template-parts/global/site-header.php` to remove inline PHP functions and improve readability.
+
+### Changed
+- **Versioning:** Established policy to update `style.css` version on every changelog entry.
+- **Documentation:** Updated `GEMINI.md` with the new versioning rule.
+
 ## [2.2.0] - 2025-11-29
 
 ### Changed

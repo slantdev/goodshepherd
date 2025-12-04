@@ -42,8 +42,12 @@ export default defineConfig({
   server: {
     strictPort: true,
     port: 5173,
-    hmr: {
-      host: "localhost",
+    host: true, // Listen on all local IPs
+    cors: {
+      origin: '*', // Allow all origins
+      methods: ['GET', 'POST', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true,
     },
   },
 });
