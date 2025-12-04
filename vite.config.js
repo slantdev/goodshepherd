@@ -11,10 +11,12 @@ export default defineConfig({
       configureServer(server) {
         const bs = browserSync.create();
         bs.init({
-          proxy: "https://goodshep2025.local",
+          proxy: "http://goodshep2025.local",
+          https: false,
           files: ["**/*.php"],
           notify: false,
           open: true,
+          port: 3005
         });
       },
     },

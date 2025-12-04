@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2025-11-29
+
+### Fixed
+- **Dev Proxy:** Resolved BrowserSync infinite redirect loops by enforcing HTTP on port 3005.
+- **Asset Enqueueing:** Updated `functions.php` to correctly switch between Vite Dev Server (HMR) and production assets.
+
+### Changed
+- **Tech Stack:** Added jQuery support to `functions.php` and documentation.
+- **Version Control:** Removed `assets/` from `.gitignore` to allow tracking of built files.
+
 ## [2.1.0] - 2025-11-29
 
 ### Added
