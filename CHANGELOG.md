@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.3] - 2025-11-29
+
+### Added
+- **ACF Configuration:** Created `inc/acf.php` to manage ACF settings.
+    - Added **Theme Settings** options page (Header/Footer).
+    - Configured **Local JSON** sync point to `acf-json/`.
+    - Added **ACF Extended Layout Thumbnails** logic with a streamlined dynamic filter.
+    - Implemented Google Maps API key filter with fallback/constant support.
+- **Assets:** Included `assets/acf-layouts/` images for flexible content previews.
+- **Data:** Included `acf-json/` files for field group synchronization.
+
 ## [2.2.2] - 2025-11-29
 
 ### Added
