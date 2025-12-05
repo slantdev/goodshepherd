@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.4] - 2025-11-29
+
+### Security
+- **Sensitive Data:** Removed hardcoded Google Maps API key from `inc/acf.php`. The key must now be defined in `wp-config.php` via the `GOOGLE_MAPS_API_KEY` constant or set in the Theme Settings options page.
+
 ## [2.2.3] - 2025-11-29
 
 ### Added

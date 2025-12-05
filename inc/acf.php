@@ -22,9 +22,9 @@ function goodshep_acf_google_map_api( $api ) {
 	// Get API key from Theme Settings
 	$api_key = get_field( 'google_maps_api_key', 'option' );
 
-	// Fallback Key (Consider defining this in wp-config.php instead for security)
-	if ( empty( $api_key ) ) {
-		$api_key = defined( 'GOOGLE_MAPS_API_KEY' ) ? constant( 'GOOGLE_MAPS_API_KEY' ) : 'AIzaSyDLizIQzcRNunD-P-YufBK-nS3mwl9V0As'; 
+	// Fallback Key (Must be defined in wp-config.php for security)
+	if ( empty( $api_key ) && defined( 'GOOGLE_MAPS_API_KEY' ) ) {
+		$api_key = constant( 'GOOGLE_MAPS_API_KEY' ); 
 	}
 
 	if ( $api_key ) {
