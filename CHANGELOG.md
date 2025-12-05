@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.5] - 2025-11-29
+
+### Added
+- **Page Builder:** Implemented a dynamic component loader (`inc/page-builder.php`) to handle ACF Flexible Content layouts.
+- **Components:** Generated placeholder template parts for 47 ACF layouts in `template-parts/components/`.
+- **Page Template:** Updated `page.php` to render the Page Builder components automatically.
+
+### Changed
+- **Code Quality:** Alphabetized the ACF layout array in `inc/acf.php` for better maintainability.
+
 ## [2.2.4] - 2025-11-29
 
 ### Security

@@ -15,5 +15,8 @@ require get_template_directory() . '/inc/post-types.php';
 // ACF Settings
 require get_template_directory() . '/inc/acf.php';
 
+// Page Builder Logic
+require get_template_directory() . '/inc/page-builder.php';
+
 // Enqueue Scripts & Styles (Vite Integration)
 require get_template_directory() . '/inc/enqueues.php';
