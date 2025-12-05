@@ -1,0 +1,99 @@
+{
+    "key": "group_5fb58d0094a1c",
+    "title": "Block Component - Icon",
+    "fields": [
+        {
+            "key": "field_5fb58d0dd1269",
+            "label": "Select an Icon",
+            "name": "icon",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "contact": "Good Shepard Contact",
+                "domestic_and_family_violence": "Domestic and Family Violence",
+                "economic_well_being": "Economic Well Being",
+                "education": "Education",
+                "family_counselling": "Family Counselling",
+                "faqs": "Frequently Asked Questions",
+                "financial_counselling": "Financial Counselling",
+                "former_resident_support": "Former Resident Support",
+                "homelessness_information": "Homelessness Information",
+                "loans_and_insurance": "Loans and Insurance",
+                "locate": "Locate",
+                "news": "News",
+                "parent_family_support": "Parent Family Support",
+                "partner_volunteer_donate": "Partner Volunteer Donate",
+                "phone": "Phone",
+                "research_and_advocacy": "Research and Advocacy",
+                "resources": "Resources",
+                "safety_and_resilience": "Safety and Resilience",
+                "support_services": "Support Services",
+                "youth_services": "Youth Services",
+                "heart": "Good Shepherd Heart",
+                "umbrella": "Umbrella"
+            },
+            "default_value": false,
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5fb598b7db9c6",
+            "label": "Use white icon",
+            "name": "is_white_icon",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1661277793,
+    "acfe_categories": {
+        "block-component": "Block Component"
+    }
+}

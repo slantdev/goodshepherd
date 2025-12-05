@@ -1,0 +1,81 @@
+{
+    "key": "group_5fb2e1bcdd4df",
+    "title": "Block Component - Image",
+    "fields": [
+        {
+            "key": "field_5fb2e1c5ff352",
+            "label": "Image Source",
+            "name": "image_source",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "uploader": "",
+            "acfe_thumbnail": 0,
+            "return_format": "url",
+            "preview_size": "medium",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "library": "all"
+        },
+        {
+            "key": "field_5fb2e1d9ff353",
+            "label": "Image Alt",
+            "name": "image_alt",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1626741353,
+    "acfe_categories": {
+        "block-component": "Block Component"
+    }
+}

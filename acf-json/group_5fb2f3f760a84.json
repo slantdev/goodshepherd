@@ -1,0 +1,62 @@
+{
+    "key": "group_5fb2f3f760a84",
+    "title": "Block Colour",
+    "fields": [
+        {
+            "key": "field_5fb2f3fe9a5d3",
+            "label": "Block Colour",
+            "name": "block_colour",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "choices": {
+                "red": "Red",
+                "purple": "Purple",
+                "black": "Black",
+                "transparent": "Transparent"
+            },
+            "default_value": false,
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "placeholder": "",
+            "ajax": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "acfe_display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1626741216,
+    "acfe_categories": {
+        "block-component": "Block Component"
+    }
+}

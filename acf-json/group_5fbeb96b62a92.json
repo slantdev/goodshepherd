@@ -1,0 +1,78 @@
+{
+    "key": "group_5fbeb96b62a92",
+    "title": "Media Coverage",
+    "fields": [
+        {
+            "key": "field_5fbeb97acc5e2",
+            "label": "Release Date",
+            "name": "release_date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "j F Y",
+            "return_format": "j F Y",
+            "first_day": 1
+        },
+        {
+            "key": "field_5fbeb9efcc5e4",
+            "label": "Excerpt",
+            "name": "coverage_excerpt",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5fbeb9fccc5e5",
+            "label": "URL",
+            "name": "coverage_url",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "media_coverage"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content"
+    ],
+    "active": false,
+    "description": "",
+    "modified": 1606636235
+}
