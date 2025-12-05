@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.2] - 2025-11-29
+
+### Added
+- **Custom Post Types:** Registered `Services`, `Service Provider`, `Jobs`, `Media Coverage`, `Publications`, `Events`, and `People` CPTs.
+- **Taxonomies:** Registered associated taxonomies for CPTs, including `service_category`, `department`, `publications_type`, etc.
+- **Refactor:** Created `inc/post-types.php` with helper functions (`goodshep_register_cpt`, `goodshep_register_tax`) to streamline CPT registration.
+- **Fix:** Implemented `goodshep_generate_taxonomy_rewrite_rules` to resolve pagination 404 errors for taxonomies sharing CPT slugs.
+
 ## [2.2.1] - 2025-11-29
 
 ### Fixed

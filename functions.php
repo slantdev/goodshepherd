@@ -9,5 +9,8 @@
 // Theme Setup (Theme Support, Nav Menus, etc.)
 require get_template_directory() . '/inc/setup.php';
 
+// Custom Post Types
+require get_template_directory() . '/inc/post-types.php';
+
 // Enqueue Scripts & Styles (Vite Integration)
 require get_template_directory() . '/inc/enqueues.php';
