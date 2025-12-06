@@ -19,8 +19,8 @@
             "acfe_save_meta": 0,
             "acfe_flexible_advanced": 1,
             "acfe_flexible_stylised_button": 1,
-            "acfe_flexible_layouts_templates": 1,
-            "acfe_flexible_layouts_previews": 1,
+            "acfe_flexible_layouts_templates": 0,
+            "acfe_flexible_layouts_placeholder": 0,
             "acfe_flexible_layouts_thumbnails": 1,
             "acfe_flexible_layouts_settings": 1,
             "acfe_flexible_async": [
@@ -2187,7 +2187,7 @@
             "button_label": "Add Content",
             "acfe_flexible_hide_empty_message": false,
             "acfe_flexible_empty_message": "",
-            "acfe_flexible_layouts_placeholder": false,
+            "acfe_flexible_layouts_previews": false,
             "acfe_flexible_layouts_state": false
         }
     ],
@@ -2280,7 +2280,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1764950637,
+    "modified": 1765015573,
     "acfe_categories": {
         "page-builder": "Page Builder"
     }
