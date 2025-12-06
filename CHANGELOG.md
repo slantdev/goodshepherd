@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `contact_form`: Implemented grid layout with social icons and form shortcode support.
     - `cta_with_image`: Refactored flex layout for image/text split.
     - `donate_now_form`: Refactored centered form container with shadow.
+    - `download_pdf_block`: Implemented flexible layout for PDF downloads with icon.
+    - `four_card_block`: Implemented 4-column grid with floating icons.
 - **Assets:** Integrated global Fancybox and Swiper initialization in `src/main.js`.
 
 ## [2.2.5] - 2025-11-29
