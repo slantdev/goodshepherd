@@ -11,6 +11,8 @@
 
 <div class="acf-layout <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_image_with_text_block(get_image_with_text_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/text_and_image.php';
+    ?>
 
 </div>

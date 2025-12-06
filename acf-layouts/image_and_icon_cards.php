@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_photo_and_icon_cards(get_photo_and_icon_cards_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/image_and_icon_cards.php';
+    ?>
 
 </div>

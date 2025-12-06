@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_tick_block(get_tick_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/tick_block.php';
+    ?>
 
 </div>

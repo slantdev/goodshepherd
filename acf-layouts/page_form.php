@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_form(get_form_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/page_form.php';
+    ?>
 
 </div>

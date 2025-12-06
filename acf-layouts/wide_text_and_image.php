@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_wide_image_with_text_block(get_wide_image_with_text_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/wide_text_and_image.php';
+    ?>
 
 </div>

@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_gallery_block(get_gallery_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/gallery_block_01.php';
+    ?>
 
 </div>

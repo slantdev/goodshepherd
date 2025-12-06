@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_testimonial_cards(get_testimonial_cards_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/testimonial_cards.php';
+    ?>
 
 </div>

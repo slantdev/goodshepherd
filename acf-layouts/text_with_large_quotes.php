@@ -11,6 +11,8 @@
 
 <div class="acf-layout <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_block_with_large_quote(get_block_with_large_quote_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/text_with_large_quotes.php';
+    ?>
 
 </div>

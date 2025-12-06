@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_solid_color_cta(get_solid_color_cta_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/solid_color_cta.php';
+    ?>
 
 </div>

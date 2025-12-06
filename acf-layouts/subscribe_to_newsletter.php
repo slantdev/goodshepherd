@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_subscribe_to_newsletter(get_subscribe_to_newsletter_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/subscribe_to_newsletter.php';
+    ?>
 
 </div>

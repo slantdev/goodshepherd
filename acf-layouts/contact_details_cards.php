@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_contact_details_block(get_contact_details_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/contact_details_cards.php';
+    ?>
 
 </div>

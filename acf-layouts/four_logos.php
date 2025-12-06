@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_four_logos_block(get_four_logos_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/four_logos_block.php';
+    ?>
 
 </div>

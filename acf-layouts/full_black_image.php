@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-  <?php display_full_black_image(); ?>
+  <?php
+  include get_template_directory() . '/template-parts/components/full_black_image.php';
+  ?>
 
 </div>

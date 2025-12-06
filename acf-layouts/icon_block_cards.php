@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_icon_blocks(get_icon_blocks_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/icon_block_cards.php';
+    ?>
 
 </div>

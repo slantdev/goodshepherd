@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_cta_with_image(get_cta_with_image_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/cta_with_image.php';
+    ?>
 
 </div>

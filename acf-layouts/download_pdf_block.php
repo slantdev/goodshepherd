@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_download_pdf_block(get_download_pdf_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/download_pdf_block.php';
+    ?>
 
 </div>

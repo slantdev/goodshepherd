@@ -11,6 +11,8 @@
 
 <div class="acf-layout <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-  <?php display_full_width_banner(); ?>
+  <?php
+  include get_template_directory() . '/template-parts/components/full_width_banner.php';
+  ?>
 
 </div>

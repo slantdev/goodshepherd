@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_shortcut_blocks(get_shortcut_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/shortcut_blocks.php';
+    ?>
 
 </div>

@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_three_cta_cards(get_three_cta_cards_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/three_card_cta.php';
+    ?>
 
 </div>

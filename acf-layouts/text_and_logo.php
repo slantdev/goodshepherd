@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_text_and_logo_block(get_text_and_logo_block_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/text_and_logo.php';
+    ?>
 
 </div>

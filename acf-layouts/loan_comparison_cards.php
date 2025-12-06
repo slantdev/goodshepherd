@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-    <?php display_loan_comparison(get_loan_comparison_content()); ?>
+    <?php
+    include get_template_directory() . '/template-parts/components/loan_comparison_cards.php';
+    ?>
 
 </div>
