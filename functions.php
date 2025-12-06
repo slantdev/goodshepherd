@@ -9,6 +9,12 @@
 // Theme Setup (Theme Support, Nav Menus, etc.)
 require get_template_directory() . '/inc/setup.php';
 
+// Template Tags & Helpers
+require get_template_directory() . '/inc/template-tags.php';
+
+// AJAX Handlers
+require get_template_directory() . '/inc/ajax-handlers.php';
+
 // Custom Post Types
 require get_template_directory() . '/inc/post-types.php';
 

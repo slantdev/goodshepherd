@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.6] - 2025-11-29
+
+### Added
+- **Dependencies:** Installed `swiper` and `@fancyapps/ui` via npm for Sliders and Lightboxes.
+- **AJAX Handlers:** Implemented `inc/ajax-handlers.php` to handle filtering and pagination for Client Stories.
+- **Helpers:** Created `inc/template-tags.php` with:
+    - `goodshep_icon()`: Retrieving SVGs from `assets/icons/`.
+    - `goodshep_get_block_classes()`: Global block styling helper.
+    - `goodshep_slugify()`, `goodshep_get_section_id()`, `goodshep_get_bg_image_style()`.
+
+### Changed
+- **Refactor:** Ported and modernized the following components from reference code:
+    - `accordion`: Converted to native `<details>`/`<summary>`.
+    - `accredited_box`: Cleaned up logic and styles.
+    - `buttons`: Modernized loops and inline styles.
+    - `client_stories`: Full rewrite using `WP_Query`, AJAX filtering support, and extracted `client_stories_item` template part.
+- **Assets:** Integrated global Fancybox and Swiper initialization in `src/main.js`.
+
 ## [2.2.5] - 2025-11-29
 
 ### Added

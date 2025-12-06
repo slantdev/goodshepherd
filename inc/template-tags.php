@@ -1,0 +1,157 @@
+<?php
+/**
+ * Custom template tags and helper functions for the theme.
+ */
+
+// Prevent direct access
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Generate slug from string (Helper)
+ */
+function goodshep_slugify( $text ) {
+    // Replace non letter or digits by -
+    $text = preg_replace( '~[^\pL\d]+~u', '-', $text );
+    // Transliterate
+    $text = iconv( 'utf-8', 'us-ascii//TRANSLIT', $text );
+    // Remove unwanted characters
+    $text = preg_replace( '~[^-\w]+~', '', $text );
+    // Trim
+    $text = trim( $text, '-' );
+    // Lowercase
+    $text = strtolower( $text );
+
+    if ( empty( $text ) ) {
+        return 'n-a';
+    }
+    return $text;
+}
+
+/**
+ * Get Section ID Attribute
+ * 
+ * Returns the ID attribute if 'section_id' subfield exists.
+ */
+function goodshep_get_section_id() {
+    $id = get_sub_field('section_id');
+    if ( $id ) {
+        return 'id="' . esc_attr( goodshep_slugify( $id ) ) . '"';
+    }
+    return '';
+}
+
+/**
+ * Get Background Image Style
+ */
+function goodshep_get_bg_image_style() {
+    $bg_img = get_sub_field('background_image');
+    if ( $bg_img && is_array($bg_img) ) {
+        return 'background-image: url(' . esc_url( $bg_img['url'] ) . '); background-repeat: no-repeat; background-size: cover; background-position: center center;';
+    }
+    return '';
+}
+
+/**
+ * Get Block Classes (Background Color, Text Color, Spacing)
+ */
+function goodshep_get_block_classes( $extra_classes = '' ) {
+    
+    // 1. Colors
+    $block_color = get_sub_field('block_colour') ?: 'white';
+    
+    // Map colors to Tailwind classes (Update these based on your Tailwind config)
+    $bg_map = [
+        'purple'     => 'bg-purple-600', // was bg-gs_purple
+        'red'        => 'bg-red-600',    // was bg-gs_red
+        'black'      => 'bg-gray-900',   // was bg-off_black
+        'white'      => 'bg-white',
+        'light_grey' => 'bg-gray-100',   // was bg-light_grey
+        'off_white'  => 'bg-gray-50',    // was bg-off_white
+    ];
+
+    $text_map = [
+        'purple'     => 'text-white',
+        'red'        => 'text-white',
+        'black'      => 'text-white',
+        'white'      => 'text-gray-900',
+        'light_grey' => 'text-gray-900',
+        'off_white'  => 'text-gray-900',
+    ];
+
+    // Default fallback
+    $bg_class   = $bg_map[$block_color] ?? 'bg-transparent';
+    $text_class = $text_map[$block_color] ?? 'text-gray-900';
+
+    // 2. Spacing (Map old values to Tailwind v4)
+    // Assuming 'pt-12' etc are standard Tailwind.
+    $spacing_top    = get_sub_field('spacing_top') ?: 'pt-12';
+    $spacing_bottom = get_sub_field('spacing_bottom') ?: 'pb-12';
+
+    return implode( ' ', [ $bg_class, $text_class, $spacing_top, $spacing_bottom, $extra_classes ] );
+}
+
+/**
+ * Get Icon
+ * 
+ * Retrieves an SVG icon from the assets/icons directory.
+ * 
+ * @param array $atts {
+ *     @type string $icon   Icon filename (without extension).
+ *     @type string $group  Subdirectory name (default: 'utility').
+ *     @type int    $size   Width/Height in pixels (default: 16).
+ *     @type string $class  Additional CSS classes.
+ *     @type string $label  Aria label for accessibility.
+ * }
+ * @return string|void SVG markup or void if not found.
+ */
+function goodshep_icon( $atts = array() ) {
+
+    $atts = shortcode_atts( array(
+        'icon'  => false,
+        'group' => 'utility',
+        'size'  => 16,
+        'class' => false,
+        'label' => false,
+    ), $atts );
+
+    if ( empty( $atts['icon'] ) ) {
+        return;
+    }
+
+    // Path to SVG
+    $icon_path = get_template_directory() . '/assets/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
+
+    if ( ! file_exists( $icon_path ) ) {
+        return;
+    }
+
+    $icon = file_get_contents( $icon_path );
+
+    // Build Class Attribute
+    $class = 'svg-icon';
+    if ( ! empty( $atts['class'] ) ) {
+        $class .= ' ' . esc_attr( $atts['class'] );
+    }
+
+    // Inject attributes into <svg> tag
+    if ( false !== $atts['size'] ) {
+        $repl = sprintf( '<svg class="%s" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $class, $atts['size'], $atts['size'] );
+        $svg  = preg_replace( '/^<svg /', $repl, trim( $icon ) );
+    } else {
+        $svg = preg_replace( '/^<svg /', '<svg class="' . $class . '"', trim( $icon ) );
+    }
+
+    // Clean up whitespace
+    $svg = preg_replace( "/([\n\t]+)/", ' ', $svg );
+    $svg = preg_replace( '/>\s*</', '><', $svg );
+
+    // Add Aria Label if present
+    if ( ! empty( $atts['label'] ) ) {
+        $svg = str_replace( '<svg class', '<svg aria-label="' . esc_attr( $atts['label'] ) . '" class', $svg );
+        $svg = str_replace( 'aria-hidden="true"', '', $svg );
+    }
+
+    return $svg;
+}
