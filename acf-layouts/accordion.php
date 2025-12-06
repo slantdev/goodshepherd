@@ -11,6 +11,8 @@
 
 <div class="acf-layout px-12 <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
 
-  <?php display_accordion(); ?>
+  <?php
+  include get_template_directory() . '/template-parts/components/accordion.php';
+  ?>
 
 </div>
