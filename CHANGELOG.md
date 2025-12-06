@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `color_text_block`: Refactored text-only layout.
     - `contact_details_cards`: Implemented grid layout with nested repeater for details.
     - `contact_form`: Implemented grid layout with social icons and form shortcode support.
+    - `cta_with_image`: Refactored flex layout for image/text split.
 - **Assets:** Integrated global Fancybox and Swiper initialization in `src/main.js`.
 
 ## [2.2.5] - 2025-11-29
