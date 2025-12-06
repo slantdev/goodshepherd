@@ -4,13 +4,36 @@
  * Layout: four_logos_block
  */
 
-// $field = get_sub_field('field_name');
+// Styling
+$section_id    = goodshep_get_section_id();
+$block_classes = goodshep_get_block_classes();
+$bg_style      = goodshep_get_bg_image_style();
 ?>
 
-<section class="component-four_logos_block py-12">
+<section <?php echo $section_id; ?> class="<?php echo esc_attr( $block_classes ); ?>" style="<?php echo esc_attr( $bg_style ); ?>">
     <div class="container mx-auto px-4">
-        <div class="p-4 border-2 border-dashed border-gray-300 bg-gray-50 rounded-lg text-center">
-            <p class="text-gray-500 font-mono text-sm">Template: template-parts/components/four_logos_block.php</p>
-        </div>
+        
+        <?php if ( have_rows('gallery_images') ) : ?>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 items-center justify-items-center">
+                <?php 
+                while ( have_rows('gallery_images') ) : the_row(); 
+                    $img = get_sub_field('image_source'); // Image array, ID, or URL
+                    if ( $img ) :
+                ?>
+                    <div class="w-full h-40 md:h-64 flex items-center justify-center p-4">
+                        <?php 
+                        if ( is_array( $img ) && isset( $img['ID'] ) ) {
+                            echo wp_get_attachment_image( $img['ID'], 'large', false, array( 'class' => 'max-h-full w-auto object-contain' ) );
+                        } elseif ( is_numeric( $img ) ) {
+                            echo wp_get_attachment_image( $img, 'large', false, array( 'class' => 'max-h-full w-auto object-contain' ) );
+                        } elseif ( is_string( $img ) ) {
+                            echo '<img src="' . esc_url( $img ) . '" class="max-h-full w-auto object-contain" alt="">';
+                        }
+                        ?>
+                    </div>
+                <?php endif; endwhile; ?>
+            </div>
+        <?php endif; ?>
+
     </div>
 </section>
