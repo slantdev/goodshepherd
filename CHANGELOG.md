@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `accredited_box`: Cleaned up logic and styles.
     - `buttons`: Modernized loops and inline styles.
     - `client_stories`: Full rewrite using `WP_Query`, AJAX filtering support, and extracted `client_stories_item` template part.
+    - `color_text_block_with_image`: Implemented split-screen grid layout with dynamic ordering.
 - **Assets:** Integrated global Fancybox and Swiper initialization in `src/main.js`.
 
 ## [2.2.5] - 2025-11-29
