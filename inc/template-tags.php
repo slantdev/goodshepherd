@@ -63,21 +63,21 @@ function goodshep_get_block_classes( $extra_classes = '' ) {
     
     // Map colors to Tailwind classes (Update these based on your Tailwind config)
     $bg_map = [
-        'purple'     => 'bg-purple-600', // was bg-gs_purple
-        'red'        => 'bg-red-600',    // was bg-gs_red
-        'black'      => 'bg-gray-900',   // was bg-off_black
+        'purple'     => 'bg-purple',
+        'red'        => 'bg-red',
+        'black'      => 'bg-off-black',
         'white'      => 'bg-white',
-        'light_grey' => 'bg-gray-100',   // was bg-light_grey
-        'off_white'  => 'bg-gray-50',    // was bg-off_white
+        'light_grey' => 'bg-light-grey',
+        'off_white'  => 'bg-off-white',
     ];
 
     $text_map = [
         'purple'     => 'text-white',
         'red'        => 'text-white',
         'black'      => 'text-white',
-        'white'      => 'text-gray-900',
-        'light_grey' => 'text-gray-900',
-        'off_white'  => 'text-gray-900',
+        'white'      => 'text-default',
+        'light_grey' => 'text-default',
+        'off_white'  => 'text-default',
     ];
 
     // Default fallback
@@ -164,13 +164,13 @@ function goodshep_icon( $atts = array() ) {
  */
 function goodshep_map_color_class( $color_name ) {
     $colors = [
-        'purple'     => 'bg-purple-600 text-white',
-        'red'        => 'bg-red-600 text-white',
-        'black'      => 'bg-gray-900 text-white',
-        'white'      => 'bg-white text-gray-900',
-        'light_grey' => 'bg-gray-100 text-gray-900',
-        'off_white'  => 'bg-gray-50 text-gray-900',
+        'purple'     => 'bg-purple text-white',
+        'red'        => 'bg-red text-white',
+        'black'      => 'bg-off-black text-white',
+        'white'      => 'bg-white text-default',
+        'light_grey' => 'bg-light-grey text-default',
+        'off_white'  => 'bg-off-white text-default',
     ];
 
-    return $colors[ $color_name ] ?? 'bg-white text-gray-900';
+    return $colors[ $color_name ] ?? 'bg-white text-default';
 }
