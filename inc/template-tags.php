@@ -1,32 +1,34 @@
 <?php
+
 /**
  * Custom template tags and helper functions for the theme.
  */
 
 // Prevent direct access
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if (! defined('ABSPATH')) {
+  exit;
 }
 
 /**
  * Generate slug from string (Helper)
  */
-function goodshep_slugify( $text ) {
-    // Replace non letter or digits by -
-    $text = preg_replace( '~[^\pL\d]+~u', '-', $text );
-    // Transliterate
-    $text = iconv( 'utf-8', 'us-ascii//TRANSLIT', $text );
-    // Remove unwanted characters
-    $text = preg_replace( '~[^-\w]+~', '', $text );
-    // Trim
-    $text = trim( $text, '-' );
-    // Lowercase
-    $text = strtolower( $text );
+function goodshep_slugify($text)
+{
+  // Replace non letter or digits by -
+  $text = preg_replace('~[^\pL\d]+~u', '-', $text);
+  // Transliterate
+  $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+  // Remove unwanted characters
+  $text = preg_replace('~[^-\w]+~', '', $text);
+  // Trim
+  $text = trim($text, '-');
+  // Lowercase
+  $text = strtolower($text);
 
-    if ( empty( $text ) ) {
-        return 'n-a';
-    }
-    return $text;
+  if (empty($text)) {
+    return 'n-a';
+  }
+  return $text;
 }
 
 /**
@@ -34,62 +36,65 @@ function goodshep_slugify( $text ) {
  * 
  * Returns the ID attribute if 'section_id' subfield exists.
  */
-function goodshep_get_section_id() {
-    $id = get_sub_field('section_id');
-    if ( $id ) {
-        return 'id="' . esc_attr( goodshep_slugify( $id ) ) . '"';
-    }
-    return '';
+function goodshep_get_section_id()
+{
+  $id = get_sub_field('section_id');
+  if ($id) {
+    return 'id="' . esc_attr(goodshep_slugify($id)) . '"';
+  }
+  return '';
 }
 
 /**
  * Get Background Image Style
  */
-function goodshep_get_bg_image_style() {
-    $bg_img = get_sub_field('background_image');
-    if ( $bg_img && is_array($bg_img) ) {
-        return 'background-image: url(' . esc_url( $bg_img['url'] ) . '); background-repeat: no-repeat; background-size: cover; background-position: center center;';
-    }
-    return '';
+function goodshep_get_bg_image_style()
+{
+  $bg_img = get_sub_field('background_image');
+  if ($bg_img && is_array($bg_img)) {
+    return 'background-image: url(' . esc_url($bg_img['url']) . '); background-repeat: no-repeat; background-size: cover; background-position: center center;';
+  }
+  return '';
 }
 
 /**
  * Get Block Classes (Background Color, Text Color, Spacing)
  */
-function goodshep_get_block_classes( $extra_classes = '' ) {
-    
-    // 1. Colors
-    $block_color = get_sub_field('block_colour') ?: 'white';
-    
-    // Map colors to Tailwind classes (Update these based on your Tailwind config)
-    $bg_map = [
-        'purple'     => 'bg-purple',
-        'red'        => 'bg-red',
-        'black'      => 'bg-off-black',
-        'white'      => 'bg-white',
-        'light_grey' => 'bg-light-grey',
-        'off_white'  => 'bg-off-white',
-    ];
+function goodshep_get_block_classes($extra_classes = '')
+{
 
-    $text_map = [
-        'purple'     => 'text-white',
-        'red'        => 'text-white',
-        'black'      => 'text-white',
-        'white'      => 'text-default',
-        'light_grey' => 'text-default',
-        'off_white'  => 'text-default',
-    ];
+  // 1. Colors
+  $block_color = get_sub_field('block_colour') ?: 'white';
 
-    // Default fallback
-    $bg_class   = $bg_map[$block_color] ?? 'bg-transparent';
-    $text_class = $text_map[$block_color] ?? 'text-gray-900';
+  // Map colors to Tailwind classes (Update these based on your Tailwind config)
+  $bg_map = [
+    'purple'     => 'bg-purple',
+    'red'        => 'bg-red',
+    'black'      => 'bg-off-black',
+    'white'      => 'bg-white',
+    'light_grey' => 'bg-light-grey',
+    'off_white'  => 'bg-off-white',
+  ];
 
-    // 2. Spacing (Map old values to Tailwind v4)
-    // Assuming 'pt-12' etc are standard Tailwind.
-    $spacing_top    = get_sub_field('spacing_top') ?: 'pt-12';
-    $spacing_bottom = get_sub_field('spacing_bottom') ?: 'pb-12';
+  $text_map = [
+    'purple'     => 'text-white',
+    'red'        => 'text-white',
+    'black'      => 'text-white',
+    'white'      => 'text-default',
+    'light_grey' => 'text-default',
+    'off_white'  => 'text-default',
+  ];
 
-    return implode( ' ', [ $bg_class, $text_class, $spacing_top, $spacing_bottom, $extra_classes ] );
+  // Default fallback
+  $bg_class   = $bg_map[$block_color] ?? 'bg-transparent';
+  $text_class = $text_map[$block_color] ?? 'text-gray-900';
+
+  // 2. Spacing (Map old values to Tailwind v4)
+  // Assuming 'pt-12' etc are standard Tailwind.
+  $spacing_top    = get_sub_field('spacing_top') ?: 'pt-12';
+  $spacing_bottom = get_sub_field('spacing_bottom') ?: 'pb-12';
+
+  return implode(' ', [$bg_class, $text_class, $spacing_top, $spacing_bottom, $extra_classes]);
 }
 
 /**
@@ -106,54 +111,55 @@ function goodshep_get_block_classes( $extra_classes = '' ) {
  * }
  * @return string|void SVG markup or void if not found.
  */
-function goodshep_icon( $atts = array() ) {
+function goodshep_icon($atts = array())
+{
 
-    $atts = shortcode_atts( array(
-        'icon'  => false,
-        'group' => 'utility',
-        'size'  => 16,
-        'class' => false,
-        'label' => false,
-    ), $atts );
+  $atts = shortcode_atts(array(
+    'icon'  => false,
+    'group' => 'utility',
+    'size'  => 16,
+    'class' => false,
+    'label' => false,
+  ), $atts);
 
-    if ( empty( $atts['icon'] ) ) {
-        return;
-    }
+  if (empty($atts['icon'])) {
+    return;
+  }
 
-    // Path to SVG
-    $icon_path = get_template_directory() . '/assets/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
+  // Path to SVG
+  $icon_path = get_template_directory() . '/assets/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
 
-    if ( ! file_exists( $icon_path ) ) {
-        return;
-    }
+  if (! file_exists($icon_path)) {
+    return;
+  }
 
-    $icon = file_get_contents( $icon_path );
+  $icon = file_get_contents($icon_path);
 
-    // Build Class Attribute
-    $class = 'svg-icon';
-    if ( ! empty( $atts['class'] ) ) {
-        $class .= ' ' . esc_attr( $atts['class'] );
-    }
+  // Build Class Attribute
+  $class = 'svg-icon';
+  if (! empty($atts['class'])) {
+    $class .= ' ' . esc_attr($atts['class']);
+  }
 
-    // Inject attributes into <svg> tag
-    if ( false !== $atts['size'] ) {
-        $repl = sprintf( '<svg class="%s" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $class, $atts['size'], $atts['size'] );
-        $svg  = preg_replace( '/^<svg /', $repl, trim( $icon ) );
-    } else {
-        $svg = preg_replace( '/^<svg /', '<svg class="' . $class . '"', trim( $icon ) );
-    }
+  // Inject attributes into <svg> tag
+  if (false !== $atts['size']) {
+    $repl = sprintf('<svg class="%s" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $class, $atts['size'], $atts['size']);
+    $svg  = preg_replace('/^<svg /', $repl, trim($icon));
+  } else {
+    $svg = preg_replace('/^<svg /', '<svg class="' . $class . '"', trim($icon));
+  }
 
-    // Clean up whitespace
-    $svg = preg_replace( "/([\n\t]+)/", ' ', $svg );
-    $svg = preg_replace( '/>\s*</', '><', $svg );
+  // Clean up whitespace
+  $svg = preg_replace("/([\n\t]+)/", ' ', $svg);
+  $svg = preg_replace('/>\s*</', '><', $svg);
 
-    // Add Aria Label if present
-    if ( ! empty( $atts['label'] ) ) {
-        $svg = str_replace( '<svg class', '<svg aria-label="' . esc_attr( $atts['label'] ) . '" class', $svg );
-        $svg = str_replace( 'aria-hidden="true"', '', $svg );
-    }
+  // Add Aria Label if present
+  if (! empty($atts['label'])) {
+    $svg = str_replace('<svg class', '<svg aria-label="' . esc_attr($atts['label']) . '" class', $svg);
+    $svg = str_replace('aria-hidden="true"', '', $svg);
+  }
 
-    return $svg;
+  return $svg;
 }
 
 /**
@@ -162,17 +168,18 @@ function goodshep_icon( $atts = array() ) {
  * @param string $color_name The ACF color value (e.g., 'purple', 'red').
  * @return string Tailwind classes.
  */
-function goodshep_map_color_class( $color_name ) {
-    $colors = [
-        'purple'     => 'bg-purple text-white',
-        'red'        => 'bg-red text-white',
-        'black'      => 'bg-off-black text-white',
-        'white'      => 'bg-white text-default',
-        'light_grey' => 'bg-light-grey text-default',
-        'off_white'  => 'bg-off-white text-default',
-    ];
+function goodshep_map_color_class($color_name)
+{
+  $colors = [
+    'purple'     => 'bg-purple text-white',
+    'red'        => 'bg-red text-white',
+    'black'      => 'bg-off-black text-white',
+    'white'      => 'bg-white text-default',
+    'light_grey' => 'bg-light-grey text-default',
+    'off_white'  => 'bg-off-white text-default',
+  ];
 
-    return $colors[ $color_name ] ?? 'bg-white text-default';
+  return $colors[$color_name] ?? 'bg-white text-default';
 }
 
 /**
@@ -180,10 +187,11 @@ function goodshep_map_color_class( $color_name ) {
  * 
  * @param mixed $data Data to debug
  */
-function preint_r( $data ) {
-    if ( current_user_can( 'manage_options' ) ) {
-        echo '<pre style="background: #fff; color: #000; padding: 10px; z-index: 9999; position: relative; border: 1px solid red; text-align: left;">';
-        print_r( $data );
-        echo '</pre>';
-    }
+function preint_r($data)
+{
+  //if ( current_user_can( 'manage_options' ) ) {
+  echo '<pre style="background: #fff; color: #000; padding: 10px; z-index: 9999; position: relative; border: 1px solid red; text-align: left;">';
+  print_r($data);
+  echo '</pre>';
+  //}
 }
