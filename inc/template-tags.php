@@ -155,3 +155,22 @@ function goodshep_icon( $atts = array() ) {
 
     return $svg;
 }
+
+/**
+ * Map Color Name to Tailwind Classes
+ * 
+ * @param string $color_name The ACF color value (e.g., 'purple', 'red').
+ * @return string Tailwind classes.
+ */
+function goodshep_map_color_class( $color_name ) {
+    $colors = [
+        'purple'     => 'bg-purple-600 text-white',
+        'red'        => 'bg-red-600 text-white',
+        'black'      => 'bg-gray-900 text-white',
+        'white'      => 'bg-white text-gray-900',
+        'light_grey' => 'bg-gray-100 text-gray-900',
+        'off_white'  => 'bg-gray-50 text-gray-900',
+    ];
+
+    return $colors[ $color_name ] ?? 'bg-white text-gray-900';
+}
