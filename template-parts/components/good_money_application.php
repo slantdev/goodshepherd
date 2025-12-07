@@ -86,7 +86,7 @@ $bg_style      = goodshep_get_bg_image_style();
                             <div class="mb-12 space-y-6">
                                 <?php foreach ( $ticks as $item ) : ?>
                                     <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4 mt-1 text-purple">
+                                        <div class="shrink-0 mr-4 mt-1 text-purple">
                                             <!-- Tick Icon -->
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                         </div>

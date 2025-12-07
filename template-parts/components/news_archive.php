@@ -62,7 +62,7 @@ $news_query = new WP_Query($args);
                         </div>
 
                         <!-- Body -->
-                        <div class="pt-14 px-8 pb-8 flex flex-col flex-grow">
+                        <div class="pt-14 px-8 pb-8 flex flex-col grow">
                             
                             <div class="text-base text-gray-500 mb-2">
                                 <?php echo get_the_date('d F Y'); ?>

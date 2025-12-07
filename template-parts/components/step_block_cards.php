@@ -31,7 +31,7 @@ $bg_style      = goodshep_get_bg_image_style();
                     <div class="border border-purple rounded-lg p-6 h-full">
                         
                         <div class="flex items-center mb-4">
-                            <div class="bg-purple text-white rounded-full flex h-8 w-8 justify-center items-center text-base flex-shrink-0 mr-4">
+                            <div class="bg-purple text-white rounded-full flex h-8 w-8 justify-center items-center text-base shrink-0 mr-4">
                                 <?php echo intval( $i ); ?>
                             </div>
 

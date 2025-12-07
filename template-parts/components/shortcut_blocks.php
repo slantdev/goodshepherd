@@ -49,7 +49,7 @@ $bg_style      = goodshep_get_bg_image_style();
                         <?php endif; ?>
 
                         <?php if ( $text ) : ?>
-                            <div class="flex-grow text-gray-600 text-base leading-relaxed mb-6">
+                            <div class="grow text-gray-600 text-base leading-relaxed mb-6">
                                 <?php echo wp_kses_post( $text ); ?>
                             </div>
                         <?php endif; ?>

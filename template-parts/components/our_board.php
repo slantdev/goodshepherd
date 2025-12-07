@@ -56,7 +56,7 @@ $bg_style      = goodshep_get_bg_image_style();
                             <?php endif; ?>
                         </div>
 
-                        <div class="flex-grow mb-6 text-gray-700 text-base leading-relaxed">
+                        <div class="grow mb-6 text-gray-700 text-base leading-relaxed">
                             <?php echo wp_kses_post( $desc ); ?>
                         </div>
 

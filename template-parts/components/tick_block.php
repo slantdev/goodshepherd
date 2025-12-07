@@ -58,7 +58,7 @@ $bg_style      = goodshep_get_bg_image_style();
                             $tick_text = get_sub_field('text');
                         ?>
                             <div class="flex items-start">
-                                <div class="flex-shrink-0 mr-4 mt-1 text-green-500">
+                                <div class="shrink-0 mr-4 mt-1 text-green-500">
                                     <!-- Tick Icon (Inline or use helper) -->
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 </div>

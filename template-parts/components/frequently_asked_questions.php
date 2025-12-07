@@ -24,13 +24,13 @@ $bg_style      = goodshep_get_bg_image_style();
         <div class="flex flex-col md:flex-row mx-auto max-w-screen-lg">
             
             <!-- Icon (Left on Desktop) -->
-            <div class="mr-10 w-16 flex-shrink-0 hidden md:block">
+            <div class="mr-10 w-16 shrink-0 hidden md:block">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/faqs.svg" alt="FAQs" class="h-16 w-16" />
             </div>
 
             <!-- Grid -->
             <?php if ( have_rows('faq_cards') ) : ?>
-                <div class="grid md:grid-cols-2 gap-y-12 md:gap-x-24 flex-grow">
+                <div class="grid md:grid-cols-2 gap-y-12 md:gap-x-24 grow">
                     <?php 
                     while ( have_rows('faq_cards') ) : the_row(); 
                         $question = get_sub_field('question');

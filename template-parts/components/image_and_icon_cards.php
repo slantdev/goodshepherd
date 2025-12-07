@@ -66,7 +66,7 @@ $bg_style      = goodshep_get_bg_image_style();
                         </div>
 
                         <!-- Body -->
-                        <div class="pt-14 px-8 pb-8 flex flex-col flex-grow">
+                        <div class="pt-14 px-8 pb-8 flex flex-col grow">
                             
                             <?php if ( $date ) : ?>
                                 <div class="text-base text-gray-500 mb-2">

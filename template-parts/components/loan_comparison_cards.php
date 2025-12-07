@@ -56,7 +56,7 @@ $bg_style      = goodshep_get_bg_image_style();
                                         <div class="border border-gray-400 rounded-lg px-6 py-8 divide-y divide-gray-200 bg-white h-full flex flex-col">
                                             
                                             <!-- Section 1: Header & Features -->
-                                            <div class="pb-6 flex-grow">
+                                            <div class="pb-6 grow">
                                                 <?php if ( $icon ) : ?>
                                                     <div class="mb-6 w-12 h-12 text-purple">
                                                         <?php echo goodshep_icon( array( 'icon' => $icon, 'class' => 'w-12 h-12 fill-current' ) ); ?>
@@ -77,7 +77,7 @@ $bg_style      = goodshep_get_bg_image_style();
                                                             $item = get_sub_field('list_item');
                                                         ?>
                                                             <div class="flex items-start">
-                                                                <div class="flex-shrink-0 mr-3 mt-1 text-green-500">
+                                                                <div class="shrink-0 mr-3 mt-1 text-green-500">
                                                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                                                 </div>
                                                                 <span class="text-sm"><?php echo esc_html( $item ); ?></span>

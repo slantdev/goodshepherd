@@ -52,13 +52,13 @@ $bg_style      = goodshep_get_bg_image_style();
                             </div>
                         <?php endif; ?>
 
-                        <div class="px-6 pb-6 flex flex-col flex-grow">
+                        <div class="px-6 pb-6 flex flex-col grow">
                             <?php if ( $card_title ) : ?>
                                 <h3 class="text-xl font-medium mb-4"><?php echo esc_html( $card_title ); ?></h3>
                             <?php endif; ?>
 
                             <?php if ( $card_text ) : ?>
-                                <div class="text-gray-700 mb-6 flex-grow">
+                                <div class="text-gray-700 mb-6 grow">
                                     <?php echo wp_kses_post( $card_text ); ?>
                                 </div>
                             <?php endif; ?>

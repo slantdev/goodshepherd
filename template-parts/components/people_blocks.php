@@ -129,7 +129,7 @@ $people_query = new WP_Query( $args );
                     ?>
                         <div class="flex flex-col sm:flex-row gap-6">
                             <?php if ( $img ) : ?>
-                                <div class="w-32 h-32 flex-shrink-0 rounded-lg overflow-hidden">
+                                <div class="w-32 h-32 shrink-0 rounded-lg overflow-hidden">
                                     <img src="<?php echo esc_url( $img['url'] ); ?>" alt="<?php echo esc_attr( $name ); ?>" class="w-full h-full object-cover">
                                 </div>
                             <?php endif; ?>

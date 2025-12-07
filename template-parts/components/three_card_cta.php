@@ -50,7 +50,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
                         </div>
                     <?php endif; ?>
 
-                    <div class="flex-grow">
+                    <div class="grow">
                         <?php if ( $card['title'] ) : ?>
                             <h3 class="text-2xl font-semibold mb-2"><?php echo esc_html( $card['title'] ); ?></h3>
                         <?php endif; ?>
