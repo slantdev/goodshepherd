@@ -46,10 +46,10 @@ $bg_style      = goodshep_get_bg_image_style();
 
               <!-- Icon (+ / -) -->
               <span class="relative ml-4 h-6 w-6 shrink-0">
-                <svg class="absolute inset-0 w-6 h-6 transition-transform duration-200 ease-out group-open:rotate-180 group-open:opacity-0 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="absolute inset-0 w-6 h-6 transition-transform duration-200 ease-out group-open:rotate-180 group-open:opacity-0 text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
                 </svg>
-                <svg class="absolute inset-0 w-6 h-6 transition-transform duration-200 ease-out opacity-0 rotate-90 group-open:rotate-0 group-open:opacity-100 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <svg class="absolute inset-0 w-6 h-6 transition-transform duration-200 ease-out opacity-0 rotate-90 group-open:rotate-0 group-open:opacity-100 text-red" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" />
                 </svg>
               </span>

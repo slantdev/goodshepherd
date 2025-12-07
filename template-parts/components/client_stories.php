@@ -27,7 +27,7 @@ $stories_query = new WP_Query( $args );
         <!-- Header & Filter -->
         <div class="mb-12 flex flex-col gap-y-4 md:flex-row md:justify-between md:items-end">
             <?php if ( $heading ) : ?>
-                <h2 class="text-red-600 font-semibold text-3xl"><?php echo esc_html( $heading ); ?></h2>
+                <h2 class="text-red font-semibold text-3xl"><?php echo esc_html( $heading ); ?></h2>
             <?php endif; ?>
 
             <?php if ( $show_filter ) : 
@@ -35,7 +35,7 @@ $stories_query = new WP_Query( $args );
                 if ( ! is_wp_error( $terms ) && ! empty( $terms ) ) :
             ?>
                 <div>
-                    <select id="stories-filter" class="xl:text-xl font-bold min-w-[300px] bg-transparent rounded-none border-x-0 border-t-0 border-b-2 border-gray-900 pl-0 py-2 focus:outline-none focus:border-red-600 transition-colors cursor-pointer">
+                    <select id="stories-filter" class="xl:text-xl font-bold min-w-[300px] bg-transparent rounded-none border-x-0 border-t-0 border-b-2 border-gray-900 pl-0 py-2 focus:outline-none focus:border-red transition-colors cursor-pointer">
                         <option value="all">All stories</option>
                         <?php foreach ( $terms as $term ) : ?>
                             <option value="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></option>
@@ -63,7 +63,7 @@ $stories_query = new WP_Query( $args );
             
             <!-- Loading Overlay (Hidden by default) -->
             <div class="blocker absolute inset-0 bg-white/60 z-10 hidden transition-opacity duration-300 flex items-center justify-center">
-                <div class="animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent"></div>
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-red border-t-transparent"></div>
             </div>
         </div>
 

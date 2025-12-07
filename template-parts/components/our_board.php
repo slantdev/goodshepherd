@@ -17,7 +17,7 @@ $bg_style      = goodshep_get_bg_image_style();
     <div class="container mx-auto px-4">
         
         <?php if ( $title ) : ?>
-            <h2 class="text-red-600 mb-10 text-3xl font-semibold"><?php echo esc_html( $title ); ?></h2>
+            <h2 class="text-red mb-10 text-3xl font-semibold"><?php echo esc_html( $title ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $text ) : ?>
@@ -62,7 +62,7 @@ $bg_style      = goodshep_get_bg_image_style();
 
                         <?php if ( $link ) : ?>
                             <div class="mt-auto">
-                                <a href="<?php echo esc_url( $link ); ?>" class="text-red-600 font-medium uppercase tracking-wider hover:text-red-800 transition-colors no-underline">
+                                <a href="<?php echo esc_url( $link ); ?>" class="text-red font-medium uppercase tracking-wider hover:opacity-80 transition-opacity no-underline">
                                     Read More
                                 </a>
                             </div>

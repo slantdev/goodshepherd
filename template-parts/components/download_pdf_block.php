@@ -56,7 +56,7 @@ $bg_style      = goodshep_get_bg_image_style();
 
                     <a href="<?php echo esc_url($pdf_link['url']); ?>"
                         target="<?php echo esc_attr($pdf_link['target'] ?: '_self'); ?>"
-                        class="text-purple-600 hover:text-purple-800 font-medium no-underline">
+                        class="text-purple hover:text-purple-800 font-medium no-underline">
                         Download PDF
                     </a>
                 </div>

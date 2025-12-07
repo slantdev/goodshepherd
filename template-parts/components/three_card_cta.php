@@ -27,7 +27,7 @@ for ( $i = 1; $i <= 3; $i++ ) {
     <div class="container mx-auto px-4">
         
         <?php if ( $title ) : ?>
-            <h2 class="text-3xl lg:text-4xl font-semibold text-red-600 mb-8"><?php echo esc_html( $title ); ?></h2>
+            <h2 class="text-3xl lg:text-4xl font-semibold text-red mb-8"><?php echo esc_html( $title ); ?></h2>
         <?php endif; ?>
 
         <div class="grid md:grid-cols-3 gap-8 md:gap-0 md:divide-x divide-gray-200">

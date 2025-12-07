@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Component: Good Money Application
  * Layout: good_money_application
@@ -27,15 +28,15 @@ $block_classes = goodshep_get_block_classes();
 $bg_style      = goodshep_get_bg_image_style();
 ?>
 
-<section <?php echo $section_id; ?> class="<?php echo esc_attr( $block_classes ); ?>" style="<?php echo esc_attr( $bg_style ); ?>">
+<section <?php echo $section_id; ?> class="<?php echo esc_attr($block_classes); ?>" style="<?php echo esc_attr($bg_style); ?>">
     <div class="container mx-auto px-4">
-        
+
         <!-- Part 1: Top CTA -->
         <?php if ( $cta_title ) : ?>
             <div class="pb-12 border-b border-gray-200 mb-12">
                 <div class="bg-purple-50 px-6 md:px-28 py-20 rounded-lg shadow-md flex flex-col lg:flex-row items-center justify-between gap-8 hover:shadow-lg transition-shadow">
                     <div class="lg:w-3/4 text-center lg:text-left">
-                        <h3 class="font-semibold text-purple-600 text-2xl mb-3"><?php echo esc_html( $cta_title ); ?></h3>
+                        <h3 class="font-semibold text-purple text-2xl mb-3"><?php echo esc_html( $cta_title ); ?></h3>
                         <div class="text-xl font-medium text-gray-900">
                             <?php echo wp_kses_post( $cta_text ); ?>
                         </div>
@@ -48,7 +49,7 @@ $bg_style      = goodshep_get_bg_image_style();
                     ?>
                         <div class="lg:w-1/4 text-center">
                             <a href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>" 
-                               class="inline-block py-3 px-8 bg-red-600 text-white font-bold rounded hover:bg-red-700 transition-colors no-underline">
+                               class="inline-block py-3 px-8 bg-red text-white font-bold rounded hover:opacity-90 transition-colors no-underline">
                                 <?php echo esc_html( $title ); ?>
                             </a>
                         </div>
@@ -61,7 +62,7 @@ $bg_style      = goodshep_get_bg_image_style();
         <?php if ( $headline ) : ?>
             <div class="pt-6">
                 <div class="mb-16">
-                    <h2 class="text-red-600 font-semibold text-3xl lg:text-4xl mb-8"><?php echo esc_html( $headline ); ?></h2>
+                    <h2 class="text-red font-semibold text-3xl lg:text-4xl mb-8"><?php echo esc_html( $headline ); ?></h2>
                     <div class="prose max-w-none text-lg leading-relaxed text-gray-700">
                         <?php echo wp_kses_post( $desc ); ?>
                     </div>
@@ -85,7 +86,7 @@ $bg_style      = goodshep_get_bg_image_style();
                             <div class="mb-12 space-y-6">
                                 <?php foreach ( $ticks as $item ) : ?>
                                     <div class="flex items-start">
-                                        <div class="flex-shrink-0 mr-4 mt-1 text-purple-600">
+                                        <div class="flex-shrink-0 mr-4 mt-1 text-purple">
                                             <!-- Tick Icon -->
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                         </div>
@@ -108,7 +109,7 @@ $bg_style      = goodshep_get_bg_image_style();
                             $lnk = $tick_btn['button_link'];
                         ?>
                              <a href="<?php echo esc_url( $lnk['url'] ); ?>" target="<?php echo esc_attr( $lnk['target'] ?: '_self' ); ?>" 
-                                class="inline-block py-3 px-8 bg-red-600 text-white font-bold rounded hover:bg-red-700 transition-colors no-underline">
+                                class="inline-block py-3 px-8 bg-red text-white font-bold rounded hover:opacity-90 transition-colors no-underline">
                                 <?php echo esc_html( $lnk['title'] ); ?>
                             </a>
                         <?php endif; ?>

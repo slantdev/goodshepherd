@@ -17,7 +17,7 @@ $bg_style      = goodshep_get_bg_image_style();
     <div class="container mx-auto px-4">
         
         <?php if ( $title ) : ?>
-            <h2 class="text-red-600 font-semibold mb-4 text-3xl"><?php echo esc_html( $title ); ?></h2>
+            <h2 class="text-red font-semibold mb-4 text-3xl"><?php echo esc_html( $title ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $shortcode ) : ?>

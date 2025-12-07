@@ -42,7 +42,7 @@ $bg_style      = goodshep_get_bg_image_style();
             
             <?php if ( $title ) : ?>
                 <div class="mb-4"> <!-- gs_md -->
-                    <h2 class="lg:text-4xl text-3xl font-semibold text-red-600">
+                    <h2 class="lg:text-4xl text-3xl font-semibold text-red">
                         <?php echo esc_html( $title ); ?>
                     </h2>
                 </div>

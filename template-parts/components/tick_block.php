@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Component: Tick Block
  * Layout: tick_block
@@ -20,12 +21,12 @@ $block_classes = goodshep_get_block_classes();
 $bg_style      = goodshep_get_bg_image_style();
 ?>
 
-<section <?php echo $section_id; ?> class="<?php echo esc_attr( $block_classes ); ?>" style="<?php echo esc_attr( $bg_style ); ?>">
+<section <?php echo $section_id; ?> class="<?php echo esc_attr($block_classes); ?>" style="<?php echo esc_attr($bg_style); ?>">
     <div class="container mx-auto px-4">
-        
+
         <!-- Main Header -->
         <?php if ( $main_title ) : ?>
-            <h2 class="text-3xl font-semibold text-red-600 mb-8"><?php echo esc_html( $main_title ); ?></h2>
+            <h2 class="text-3xl font-semibold text-red mb-8"><?php echo esc_html( $main_title ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $main_text ) : ?>
@@ -76,7 +77,7 @@ $bg_style      = goodshep_get_bg_image_style();
                 ?>
                     <div>
                         <a href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>" 
-                           class="inline-block bg-red-600 text-white font-bold py-3 px-8 rounded hover:bg-red-700 transition-colors no-underline">
+                           class="inline-block bg-red text-white font-bold py-3 px-8 rounded hover:opacity-90 transition-colors no-underline">
                             <?php echo esc_html( $button_text ); ?>
                         </a>
                     </div>

@@ -46,7 +46,7 @@ $people_query = new WP_Query( $args );
     <div class="container mx-auto px-4">
         
         <?php if ( $title ) : ?>
-            <h2 class="font-semibold mb-6 text-3xl text-red-600"><?php echo esc_html( $title ); ?></h2>
+            <h2 class="font-semibold mb-6 text-3xl text-red"><?php echo esc_html( $title ); ?></h2>
         <?php endif; ?>
 
         <?php if ( $text ) : ?>
@@ -79,7 +79,7 @@ $people_query = new WP_Query( $args );
                             <div class="prose max-w-none text-gray-700 mb-6">
                                 <?php echo wp_kses_post( $exc ); ?>
                             </div>
-                            <button type="button" class="text-red-600 font-medium uppercase tracking-wider hover:text-red-800">Read More</button>
+                            <button type="button" class="text-red font-medium uppercase tracking-wider hover:opacity-80">Read More</button>
                         </div>
                     <?php endwhile; ?>
                 </div>
@@ -112,7 +112,7 @@ $people_query = new WP_Query( $args );
                                 </div>
                             <?php endif; ?>
                             
-                            <button type="button" class="text-red-600 font-medium uppercase tracking-wider hover:text-red-800 mt-4 text-sm">Read More</button>
+                            <button type="button" class="text-red font-medium uppercase tracking-wider hover:opacity-80 mt-4 text-sm">Read More</button>
                         </div>
                     <?php endwhile; ?>
                 </div>
@@ -148,10 +148,10 @@ $people_query = new WP_Query( $args );
                                 <?php endif; ?>
 
                                 <?php if ( $email ) : ?>
-                                    <a href="mailto:<?php echo esc_attr( $email ); ?>" class="text-purple-600 text-sm block mb-2"><?php echo esc_html( $email ); ?></a>
+                                    <a href="mailto:<?php echo esc_attr( $email ); ?>" class="text-purple text-sm block mb-2"><?php echo esc_html( $email ); ?></a>
                                 <?php endif; ?>
 
-                                <button type="button" class="text-red-600 font-medium uppercase tracking-wider hover:text-red-800 text-sm">Read More</button>
+                                <button type="button" class="text-red font-medium uppercase tracking-wider hover:opacity-80 text-sm">Read More</button>
                             </div>
                         </div>
                     <?php endwhile; ?>

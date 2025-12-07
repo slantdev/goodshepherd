@@ -65,7 +65,7 @@ $bg_style      = goodshep_get_bg_image_style();
 
                             <?php if ( $button_text && $button_link ) : ?>
                                 <div class="mt-auto">
-                                    <a href="<?php echo esc_url( $button_link ); ?>" class="text-red-600 font-medium uppercase tracking-wider hover:text-red-800 transition-colors no-underline text-sm">
+                                    <a href="<?php echo esc_url( $button_link ); ?>" class="text-red font-medium uppercase tracking-wider hover:opacity-80 transition-colors no-underline text-sm">
                                         <?php echo esc_html( $button_text ); ?>
                                     </a>
                                 </div>

@@ -57,7 +57,7 @@ $bg_style      = goodshep_get_bg_image_style();
                         ?>
                             <div class="mt-6">
                                 <a href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>" 
-                                   class="text-red-600 font-medium uppercase hover:text-red-800 transition-colors no-underline">
+                                   class="text-red font-medium uppercase hover:opacity-80 transition-opacity no-underline">
                                     <?php echo esc_html( $button_text ); ?>
                                 </a>
                             </div>

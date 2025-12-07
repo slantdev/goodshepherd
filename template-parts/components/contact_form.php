@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Component: Contact Form Block
  * Layout: contact_form
@@ -23,38 +24,38 @@ $socials = [
 ];
 ?>
 
-<section <?php echo $section_id; ?> class="<?php echo esc_attr( $block_classes ); ?>" style="<?php echo esc_attr( $bg_style ); ?>">
+<section <?php echo $section_id; ?> class="<?php echo esc_attr($block_classes); ?>" style="<?php echo esc_attr($bg_style); ?>">
     <div class="container mx-auto px-4">
-        
+
         <div class="grid md:grid-cols-2 gap-10 lg:gap-32">
-            
+
             <!-- Left Column: Text & Socials -->
             <div class="mb-12 md:mb-0">
-                
-                <?php if ( $title ) : ?>
+
+                <?php if ($title) : ?>
                     <h2 class="text-red-600 font-semibold text-3xl mb-6">
-                        <?php echo esc_html( $title ); ?>
+                        <?php echo esc_html($title); ?>
                     </h2>
                 <?php endif; ?>
 
-                <?php if ( $text ) : ?>
+                <?php if ($text) : ?>
                     <div class="prose max-w-none mb-8 text-lg text-gray-700">
-                        <?php echo wp_kses_post( $text ); ?>
+                        <?php echo wp_kses_post($text); ?>
                     </div>
                 <?php endif; ?>
 
                 <div class="flex space-x-4">
-                    <?php foreach ( $socials as $network => $url ) : ?>
-                        <a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer" 
-                           class="text-purple-600 hover:text-gray-900 transition-colors"
-                           aria-label="<?php echo esc_attr( ucfirst( $network ) ); ?>">
-                            <?php 
-                            echo goodshep_icon( array( 
-                                'icon'  => $network, 
-                                'group' => 'social', 
-                                'size'  => 30, 
-                                'class' => 'fill-current' 
-                            ) ); 
+                    <?php foreach ($socials as $network => $url) : ?>
+                        <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer"
+                            class="text-purple hover:text-gray-900 transition-colors"
+                            aria-label="<?php echo esc_attr(ucfirst($network)); ?>">
+                            <?php
+                            echo goodshep_icon(array(
+                                'icon'  => $network,
+                                'group' => 'social',
+                                'size'  => 30,
+                                'class' => 'fill-current'
+                            ));
                             ?>
                         </a>
                     <?php endforeach; ?>
@@ -64,10 +65,10 @@ $socials = [
 
             <!-- Right Column: Form -->
             <div class="w-full">
-                <?php 
-                if ( $shortcode ) {
-                    echo do_shortcode( $shortcode ); 
-                } elseif ( is_user_logged_in() ) {
+                <?php
+                if ($shortcode) {
+                    echo do_shortcode($shortcode);
+                } elseif (is_user_logged_in()) {
                     echo '<p class="p-4 bg-gray-100 border border-dashed text-gray-500 text-center">Select a form in the editor to display it here.</p>';
                 }
                 ?>
