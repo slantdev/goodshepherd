@@ -21,7 +21,7 @@ $bg_style      = goodshep_get_bg_image_style();
             </div>
         <?php endif; ?>
 
-        <div class="flex flex-col md:flex-row mx-auto max-w-screen-lg">
+        <div class="flex flex-col md:flex-row mx-auto max-w-5xl">
             
             <!-- Icon (Left on Desktop) -->
             <div class="mr-10 w-16 shrink-0 hidden md:block">

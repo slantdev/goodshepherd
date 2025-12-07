@@ -45,7 +45,7 @@ $bg_style      = goodshep_get_bg_image_style();
             </div>
 
             <!-- Right: Main Image -->
-            <div class="h-64 md:h-full w-full rounded-md overflow-hidden bg-gray-100 min-h-[20rem]">
+            <div class="h-64 md:h-full w-full rounded-md overflow-hidden bg-gray-100 min-h-80">
                 <?php 
                 if ( $main_image ) {
                     if ( is_array( $main_image ) && isset( $main_image['ID'] ) ) {

@@ -22,7 +22,7 @@ $bg_style      = goodshep_get_bg_image_style();
                         if ( $img ) :
                     ?>
                         <div class="swiper-slide">
-                            <div class="h-64 md:h-[32rem] w-full bg-gray-100">
+                            <div class="h-64 md:h-128 w-full bg-gray-100">
                                 <?php 
                                 if ( is_array( $img ) && isset( $img['ID'] ) ) {
                                     echo wp_get_attachment_image( $img['ID'], 'full', false, array( 'class' => 'h-full w-full object-cover' ) );

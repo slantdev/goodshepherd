@@ -66,15 +66,15 @@ $bg_style      = goodshep_get_bg_image_style();
                                 </div>
                             <?php endif; ?>
 
-                                                        <?php if ( $email ) : ?>
+                                                                                    <?php if ( $email ) : ?>
 
-                                                            <a href="mailto:<?php echo esc_attr( $email ); ?>" class="text-sm text-purple hover:opacity-80 transition-opacity break-words mt-auto">
+                                                                                        <a href="mailto:<?php echo esc_attr( $email ); ?>" class="text-sm text-purple hover:opacity-80 transition-opacity break-all mt-auto">
 
-                                                                <?php echo esc_html( $email ); ?>
+                                                                                            <?php echo esc_html( $email ); ?>
 
-                                                            </a>
+                                                                                        </a>
 
-                                                        <?php endif; ?>
+                                                                                    <?php endif; ?>
                         </div>
 
                     </div>

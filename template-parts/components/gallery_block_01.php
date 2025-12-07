@@ -20,7 +20,7 @@ $bg_style      = goodshep_get_bg_image_style();
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             
             <!-- Info Box (First Item) -->
-            <div class="flex flex-col justify-center items-center text-center p-8 border border-gray-400 rounded-md bg-white min-h-[16rem]">
+            <div class="flex flex-col justify-center items-center text-center p-8 border border-gray-400 rounded-md bg-white min-h-64">
                 <?php if ( $title ) : ?>
                     <h3 class="text-xl font-semibold mb-4"><?php echo esc_html( $title ); ?></h3>
                 <?php endif; ?>
