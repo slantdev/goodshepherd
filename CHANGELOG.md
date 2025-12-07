@@ -29,7 +29,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `donate_now_form`: Refactored centered form container with shadow.
     - `download_pdf_block`: Implemented flexible layout for PDF downloads with icon.
     - `four_card_block`: Implemented 4-column grid with floating icons.
+    - `four_logos_block`: Refactored to use `object-contain` for logos in a grid.
+    - `frequently_asked_questions`: Implemented FAQ accordion/grid with icon.
+    - `full_black_image`: Implemented dark section with background image support.
+    - `full_text`: Refactored text block with alignment and width options.
+    - `full_width_banner`: Implemented hero banner with optional button.
+    - `gallery_block_01`: Refactored grid gallery with info box.
+    - `gallery_block_02`: Implemented split gallery with thumbnails and main image.
+    - `gallery_slider`: Replaced Splide with Swiper.js implementation.
+    - `good_money_application`: Refactored complex stacked CTA and Tick block.
+    - `html_block`: Created simple raw HTML output component.
+    - `icon_block_cards`: Implemented grid of cards with top-left icons.
+    - `image_and_icon_cards`: Refactored image cards with overlay icons.
+    - `key_contacts`: Implemented grid of contact cards with image and details.
+    - `loan_comparison_cards`: Refactored complex comparison table/card layout.
+    - `news_archive`: Implemented latest posts grid with category filter support.
+    - `our_board`: Refactored board member grid.
+    - `page_form`: Implemented form container with side decoration.
+    - `people_blocks`: Implemented dynamic layout switching (CEO/Board/List) based on taxonomy.
+    - `rectangle_color_block`: Refactored colored content block.
+    - `shortcut_blocks`: Implemented shortcut navigation grid.
+    - `small_photo_cards`: Refactored image-top cards.
+    - `solid_color_cta`: Implemented colored CTA strip.
+    - `step_block_cards`: Implemented numbered step process grid.
+    - `subscribe_to_newsletter`: Refactored newsletter block with decorative elements.
+    - `testimonial_cards`: Implemented testimonial grid with circular images and color mapping.
+    - `text_and_image`: Refactored standard text/image split block.
+    - `text_and_logo_block`: Implemented flex layout for text and logo row.
+    - `text_block_cards`: Refactored simple text card grid.
+    - `text_with_large_quotes`: Implemented text block with featured quote style.
+    - `three_card_cta`: Refactored 3-column CTA strip.
+    - `tick_block`: Implemented content block with tick-list feature.
+    - `twitter_feed`: Implemented shortcode wrapper for Twitter.
+    - `two_card_block`: Implemented 2-column feature grid.
+    - `two_line_cta`: Refactored horizontal CTA strip.
+    - `video_block`: Implemented responsive video grid (1-3 cols) with oEmbed support.
+    - `wide_text_and_image`: Refactored wide variation of text/image block.
 - **Assets:** Integrated global Fancybox and Swiper initialization in `src/main.js`.
+- **Git:** Temporarily ignored `assets/images/` to prevent large binary push failures.
 
 ## [2.2.5] - 2025-11-29
 
