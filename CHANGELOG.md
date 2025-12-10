@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.7] - 2025-11-29
+
+### Added
+- **Typography:** Enqueued Google Fonts (Poppins and Roboto).
+- **Tailwind Plugin:** Installed and configured `@tailwindcss/typography` for prose styling.
+- **Helper:** Added `preint_r()` debug function (admin-only) to `inc/template-tags.php`.
+
+### Changed
+- **Code Style:** Applied Tailwind v4 canonical class names (e.g., `shrink-0` instead of `flex-shrink-0`) and custom theme color classes across all components.
+
 ## [2.2.6] - 2025-11-29
 
 ### Added
