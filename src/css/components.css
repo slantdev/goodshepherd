@@ -1,0 +1,88 @@
+/* Component-Specific Styles */
+
+/* ---------------------------------------------------------
+   Navigation & Mega Menu
+   --------------------------------------------------------- */
+#mega-menu-wrap-primary .mega-menu-toggle + #mega-menu-primary {
+  @apply pb-8 md:pb-0;
+}
+
+#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-label {
+  @apply text-off-black;
+}
+
+#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
+  @apply font-normal md:font-semibold py-2 md:py-0 h-auto border-b border-light-grey;
+}
+
+#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link {
+  @apply font-semibold text-red;
+}
+
+#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item > ul.mega-sub-menu {
+  @apply bg-off-white shadow-inner md:shadow-lg p-0 md:p-8;
+}
+
+/* ---------------------------------------------------------
+   Forms (Material Design Overrides)
+   --------------------------------------------------------- */
+.mdc-select--filled .mdc-select__anchor {
+  @apply bg-white rounded;
+}
+.mdc-select--filled:not(.mdc-select--disabled) .mdc-select__anchor {
+  @apply bg-purple text-white;
+}
+.mdc-text-field--focused .mdc-floating-label {
+  @apply text-purple;
+}
+.mdc-linear-progress__bar-inner {
+  @apply border-purple;
+}
+
+/* ---------------------------------------------------------
+   Plugin Overrides (Fancybox, Swiper)
+   --------------------------------------------------------- */
+.fancybox__backdrop {
+  @apply bg-black/80;
+}
+.fancybox__content > .f-button.is-close-btn {
+  @apply text-red -top-12;
+}
+
+:root {
+  --swiper-theme-color: #d72c32; /* gs_red */
+  --swiper-pagination-bullet-inactive-color: white;
+}
+
+/* ---------------------------------------------------------
+   Timeline Page
+   --------------------------------------------------------- */
+.timeline-entries .timeline-section .timeline-border-top {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='#86774F' stroke-width='3' stroke-dasharray='3%2c 9' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  background-repeat: repeat;
+  height: 10px;
+}
+
+.pulse-red {
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0% { box-shadow: 0 0 0 0px rgba(215, 44, 50, 0.2); }
+  100% { box-shadow: 0 0 0 20px rgba(215, 44, 50, 0); }
+}
+
+/* ---------------------------------------------------------
+   Service Locator
+   --------------------------------------------------------- */
+.service_locator-details_panel {
+  @apply fixed top-0 w-full h-full z-50 bg-white opacity-0 overflow-hidden transform -translate-x-full transition-all duration-300 ease-in-out;
+}
+.open .service_locator-details_panel {
+  @apply opacity-100 translate-x-0;
+}
+@media (min-width: 768px) {
+  .service_locator-details_panel {
+    width: 400px;
+  }
+}

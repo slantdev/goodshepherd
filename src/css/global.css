@@ -1,0 +1,56 @@
+/* Global Base Styles & Resets */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    direction: ltr !important;
+  }
+
+  body {
+    @apply text-default bg-white font-sans antialiased;
+    line-height: 1.67;
+  }
+
+  /* Typography Defaults */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium leading-tight mb-4 text-off-black;
+  }
+
+  h1 { @apply text-4xl lg:text-[54px]; }
+  h2 { @apply text-3xl lg:text-[34px]; }
+  h3 { @apply text-2xl lg:text-3xl; }
+  h4 { @apply text-xl; }
+  h5 { @apply text-lg; }
+  h6 { @apply text-base uppercase tracking-widest; }
+
+  a {
+    @apply text-red underline transition-all duration-200;
+    &:hover {
+      @apply no-underline text-red;
+    }
+  }
+
+  strong {
+    @apply font-bold;
+  }
+
+  /* Form Elements */
+  input, select, textarea {
+    @apply bg-white border border-gray-300 rounded text-default text-lg p-3 w-full;
+  }
+}
+
+/* Helper Utilities */
+.category-icon {
+  filter: brightness(0) invert(1);
+}
+
+.img-greyscale {
+  img {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+  &:hover img {
+    filter: grayscale(0%);
+  }
+}

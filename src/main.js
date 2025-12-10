@@ -1,4 +1,6 @@
 import './style.css';
+import './css/global.css';
+import './css/components.css';
 
 // Import Fancybox
 import { Fancybox } from "@fancyapps/ui";
