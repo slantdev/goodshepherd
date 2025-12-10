@@ -14,6 +14,10 @@ if (!defined('VITE_SERVER')) {
 }
 
 function goodshep_enqueue_scripts() {
+    // Google Fonts
+    wp_enqueue_style('poppins', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', [], null);
+    wp_enqueue_style('roboto', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap', [], null);
+
     if (IS_VITE_DEVELOPMENT) {
         // Development: Vite Dev Server (HMR)
         wp_enqueue_script('vite-client', VITE_SERVER . '/@vite/client', [], null, false);
