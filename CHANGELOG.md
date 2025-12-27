@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.8] - 2025-12-26
+
+### Fixed
+- **Dev Environment:** Fixed Vite dev server connection timeout issues by implementing dynamic local IP detection.
+    - Added `write-hot-file` plugin to `vite.config.js` to generate a `hot` file containing the correct dev server URL.
+    - Updated `inc/enqueues.php` to read the `hot` file, ensuring assets load correctly regardless of `wp-config.php` constants.
+    - Added `hot` to `.gitignore`.
+
 ## [2.2.7] - 2025-11-29
 
 ### Added

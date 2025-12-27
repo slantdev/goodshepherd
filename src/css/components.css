@@ -5,23 +5,112 @@
 /* ---------------------------------------------------------
    Navigation & Mega Menu
    --------------------------------------------------------- */
+.main-navigation {
+  @apply flex-1 basis-auto;
+  ul {
+    @apply clear-both leading-none m-0 w-full;
+  }
+  .menu-item {
+    @apply list-none relative;
+    a {
+      @apply border-none block relative text-[19px] font-semibold leading-6 px-3 py-4 no-underline text-default;
+    }
+    &.current-menu-item,
+    &.current-menu-ancestor {
+      > a {
+        @apply text-red;
+      }
+    }
+  }
+
+  .submenu-expand {
+    @apply bg-transparent border-none rounded-none shadow-none p-0 outline-none cursor-pointer;
+    @apply absolute leading-none top-1/2 -translate-y-1/2 right-[7px];
+    svg {
+      @apply fill-gray-500;
+    }
+  }
+
+  .nav-secondary {
+    .menu-item.search {
+      @apply pt-1 pb-4 px-4 lg:mt-[5px] lg:mb-0 lg:mr-0 lg:ml-2;
+      .search-field {
+        @apply lg:py-2 w-[268px];
+      }
+    }
+  }
+
+  .nav-primary {
+    @apply py-2 px-0;
+    .menu {
+      @apply flex flex-col lg:flex-row;
+      .menu-item {
+        @apply lg:mr-8;
+      }
+    }
+    .menu-item.search {
+      @apply leading-none hidden lg:block;
+      button {
+        @apply p-3;
+      }
+    }
+  }
+}
+
 #mega-menu-wrap-primary .mega-menu-toggle + #mega-menu-primary {
   @apply pb-8 md:pb-0;
 }
 
-#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1 .mega-toggle-label {
+#mega-menu-wrap-primary
+  .mega-menu-toggle
+  .mega-toggle-block-1
+  .mega-toggle-label {
   @apply text-off-black;
 }
 
-#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item > a.mega-menu-link {
-  @apply font-normal md:font-semibold py-2 md:py-0 h-auto border-b border-light-grey;
+#mega-menu-wrap-primary .mega-menu-toggle .mega-toggle-block-1:after {
+  @apply text-off-black;
 }
 
-#mega-menu-wrap-primary #mega-menu-primary > li.mega-menu-item.mega-current-menu-item > a.mega-menu-link {
+#mega-menu-wrap-primary
+  #mega-menu-primary
+  > li.mega-menu-item
+  > a.mega-menu-link {
+  @apply font-normal md:font-semibold py-2 md:py-0 h-auto hover:font-normal hover:md:font-semibold focus:font-normal focus:md:font-semibold;
+}
+#mega-menu-wrap-primary
+  #mega-menu-primary
+  > li.mega-menu-item.mega-toggle-on
+  > a.mega-menu-link {
+  @apply font-normal md:font-semibold hover:font-normal hover:md:font-semibold focus:font-normal focus:md:font-semibold;
+}
+
+#mega-menu-wrap-primary
+  #mega-menu-primary
+  > li.mega-menu-megamenu
+  > ul.mega-sub-menu
+  li.mega-menu-column
+  > ul.mega-sub-menu
+  > li.mega-menu-item
+  h4.mega-block-title {
+  @apply px-8 md:px-0 text-xl font-semibold;
+}
+
+#mega-menu-wrap-primary .mega-sub-menu .menu-item a {
+  @apply text-lg py-4 px-6 md:py-3 md:px-0 font-normal border-b md:border-none;
+}
+
+#mega-menu-wrap-primary
+  #mega-menu-primary
+  > li.mega-menu-item.mega-current-menu-item
+  > a.mega-menu-link {
   @apply font-semibold text-red;
 }
 
-#mega-menu-wrap-primary #mega-menu-primary li.mega-menu-item > ul.mega-sub-menu {
+#mega-menu-wrap-primary
+  #mega-menu-primary
+  li.mega-menu-item
+  > ul.mega-sub-menu {
   @apply bg-off-white shadow-inner md:shadow-lg p-0 md:p-8;
 }
 
@@ -70,8 +159,12 @@
 }
 
 @keyframes pulse-red {
-  0% { box-shadow: 0 0 0 0px rgba(215, 44, 50, 0.2); }
-  100% { box-shadow: 0 0 0 20px rgba(215, 44, 50, 0); }
+  0% {
+    box-shadow: 0 0 0 0px rgba(215, 44, 50, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(215, 44, 50, 0);
+  }
 }
 
 /* ---------------------------------------------------------
