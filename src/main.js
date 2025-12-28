@@ -20,6 +20,7 @@ Fancybox.bind("[data-fancybox]", {
 
 // Initialize Swiper
 document.addEventListener('DOMContentLoaded', () => {
+    // Swiper
     const swipers = document.querySelectorAll('.swiper');
     swipers.forEach(el => {
         new Swiper(el, {
@@ -35,6 +36,60 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     });
+
+    // Search Toggle Logic
+    const searchToggle = document.getElementById('search-toggle');
+    const searchFormContainer = document.getElementById('header-search-form');
+    
+    if (searchToggle && searchFormContainer) {
+        const searchIcon = searchToggle.querySelector('.search-icon');
+        const closeIcon = searchToggle.querySelector('.close-icon');
+        const searchInput = searchFormContainer.querySelector('input.search-field');
+
+        const toggleSearch = (show) => {
+            const isShowing = show !== undefined ? show : searchFormContainer.classList.contains('hidden');
+            
+            if (isShowing) {
+                // Show
+                searchFormContainer.classList.remove('hidden');
+                searchToggle.setAttribute('aria-expanded', 'true');
+                searchIcon?.classList.add('hidden');
+                closeIcon?.classList.remove('hidden');
+                if (searchInput) {
+                    setTimeout(() => searchInput.focus(), 50);
+                }
+            } else {
+                // Hide
+                searchFormContainer.classList.add('hidden');
+                searchToggle.setAttribute('aria-expanded', 'false');
+                searchIcon?.classList.remove('hidden');
+                closeIcon?.classList.add('hidden');
+            }
+        };
+
+        // Click Handler
+        searchToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleSearch();
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !searchFormContainer.classList.contains('hidden')) {
+                toggleSearch(false);
+                searchToggle.focus();
+            }
+        });
+
+        // Close on Click Outside
+        document.addEventListener('click', (e) => {
+            if (!searchFormContainer.classList.contains('hidden') && 
+                !searchFormContainer.contains(e.target) && 
+                !searchToggle.contains(e.target)) {
+                toggleSearch(false);
+            }
+        });
+    }
 });
 
 console.log('Main JS Loaded');

@@ -172,30 +172,26 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
           <?php endwhile; ?>
         </ul>
       </nav>
+
+      <div class="header-search relative ml-4 hidden lg:block">
+        <button id="search-toggle" class="flex items-center focus:outline-none hover:text-purple cursor-pointer transition-colors p-5" aria-expanded="false" aria-controls="header-search-form" aria-label="<?php esc_attr_e('Toggle search', 'goodshep-theme'); ?>">
+          <span class="search-icon block">
+            <?php echo goodshep_icon(array('icon' => 'search', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
+          </span>
+          <span class="close-icon hidden">
+            <?php echo goodshep_icon(array('icon' => 'close', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
+          </span>
+        </button>
+
+        <div id="header-search-form" class="hidden absolute right-0 top-full bg-off-white shadow-lg p-4 z-50 w-80 rounded-b-lg">
+          <?php get_search_form(); ?>
+        </div>
+      </div>
+
     </div>
   <?php endif; ?>
 
-  <nav id="site-navigation" class="main-navigation w-full hidden" role="navigation" aria-label="<?php esc_attr_e('Primary Menu', 'goodshep-theme'); ?>">
-    <?php
-    wp_nav_menu(array(
-      'theme_location' => 'primary',
-      'menu_id'        => 'primary-menu',
-      'container'      => false,
-      'menu_class'     => 'flex flex-wrap gap-x-8 text-base font-medium text-off-black py-4',
-    ));
-    ?>
-  </nav>
 
-  <!-- Desktop Search Toggle -->
-  <div class="header-search-toggle ml-4 border-l border-gray-200 pl-4 hidden">
-    <button id="search-toggle" class="flex items-center text-purple focus:outline-none hover:text-off-black transition-colors">
-      <span class="sr-only"><?php esc_html_e('Search', 'goodshep-theme'); ?></span>
-      <?php echo goodshep_icon(array('icon' => 'search', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
-    </button>
-  </div>
 
-  <!-- Desktop Search Form (Hidden by default) -->
-  <div id="header-search-form" class="hidden absolute right-0 top-full bg-white shadow-lg p-4 z-50 w-80 border-t border-gray-100">
-    <?php get_search_form(); ?>
-  </div>
+
 </div>
