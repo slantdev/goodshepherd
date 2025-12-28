@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.12] - 2025-12-26
+
+### Added
+- **Navigation:** Implemented a slide-out mobile navigation drawer (Right-to-Left).
+    - Added backdrop overlay with fade transition.
+    - Implemented accordion logic for submenus using ACF 'menu_items' data.
+    - Simplified mega menu and dropdown structures for mobile readability.
+    - Added body scroll locking when the menu is active.
+
 ## [2.2.11] - 2025-12-26
 
 ### Added

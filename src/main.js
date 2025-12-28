@@ -109,6 +109,72 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Mobile Menu Drawer Logic
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenuDrawer = document.getElementById('mobile-menu-drawer');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (mobileMenuToggle && mobileMenuDrawer && mobileMenuOverlay) {
+        const openMenu = () => {
+            mobileMenuDrawer.classList.remove('translate-x-full');
+            mobileMenuOverlay.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                mobileMenuOverlay.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            mobileMenuToggle.setAttribute('aria-expanded', 'true');
+        };
+
+        const closeMenu = () => {
+            mobileMenuDrawer.classList.add('translate-x-full');
+            mobileMenuOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('hidden');
+            }, 300); // Match transition duration
+            document.body.style.overflow = '';
+            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        };
+
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            openMenu();
+        });
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', (e) => {
+                e.preventDefault();
+                closeMenu();
+            });
+        }
+
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+
+        // Accordion Logic
+        const accordionToggles = mobileMenuDrawer.querySelectorAll('.js-mobile-accordion-toggle');
+        accordionToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const parentLi = toggle.closest('li');
+                const submenu = parentLi.querySelector('ul');
+                const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+                if (isExpanded) {
+                    // Collapse
+                    submenu.classList.add('hidden');
+                    toggle.classList.remove('rotate-180');
+                    toggle.setAttribute('aria-expanded', 'false');
+                } else {
+                    // Expand
+                    submenu.classList.remove('hidden');
+                    toggle.classList.add('rotate-180');
+                    toggle.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
 });
 
 console.log('Main JS Loaded');
