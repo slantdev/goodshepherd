@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Utilized Tailwind `group` utilities for hover and focus states.
     - Added ARIA attributes for better accessibility.
     - Configured dynamic column layout via ACF repeater fields.
+    - Added support for `link-image` submenu type with grid layout and hover effects.
 
 ## [2.2.8] - 2025-12-26
 

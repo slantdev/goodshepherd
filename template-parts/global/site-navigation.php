@@ -53,6 +53,7 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                 $megamenu_heading = $megamenu_items['menu_heading'] ?? '';
                 $megamenu_submenu_type = $megamenu_items['submenu_type'] ?? '';
                 $megamenu_submenu_repeater = $megamenu_items['submenu_group'] ?? [];
+                $megamenu_image_grid_repeater = $megamenu_items['images_grid_group'] ?? [];
               ?>
                 <div class="megamenu--submenu absolute left-0 right-0 top-full bg-off-white p-8 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50 border-t border-gray-100">
 
@@ -69,12 +70,6 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                         $submenu_items = $submenu['submenu_items'] ?? [];
                       ?>
                         <div class="px-4 pb-4">
-                          <?php if ($submenu_heading): ?>
-                            <h3 class="submenu--heading text-xl font-semibold text-off-black mb-4">
-                              <?php echo esc_html($submenu_heading); ?>
-                            </h3>
-                          <?php endif; ?>
-
                           <?php if (!empty($submenu_items)): ?>
                             <ul class="submenu--ul space-y-2">
                               <?php foreach ($submenu_items as $item):
@@ -98,7 +93,53 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                     </div>
                   <?php endif; ?>
 
+                  <?php if ($megamenu_submenu_type === 'link-image' && !empty($megamenu_image_grid_repeater)): ?>
+                    <div class="megamenu--grid grid grid-cols-3">
+                      <?php foreach ($megamenu_image_grid_repeater as $submenu):
+                        $submenu_heading = $submenu['submenu_heading'] ?? '';
+                        $submenu_items = $submenu['submenu_items'] ?? [];
+                      ?>
+                        <div class="px-4 pb-4">
+                          <?php if ($submenu_heading): ?>
+                            <h3 class="submenu--heading text-xl font-semibold text-off-black mb-4">
+                              <?php echo esc_html($submenu_heading); ?>
+                            </h3>
+                          <?php endif; ?>
+
+                          <?php if (!empty($submenu_items)): ?>
+                            <ul class="submenu--ul space-y-4">
+                              <?php foreach ($submenu_items as $item):
+                                $link = $item['submenu_link'] ?? [];
+                                $title = $link['title'] ?? '';
+                                $url = $link['url'] ?? '#';
+                                $target = $link['target'] ?? '_self';
+                                $submenu_image = $item['submenu_image'] ?? [];
+                                $image_src = $submenu_image['url'] ?? '';
+                                $image_alt = $submenu_image['alt'] ?? $title;
+                              ?>
+                                <li class="submenu--li">
+                                  <a href="<?php echo esc_url($url); ?>"
+                                    target="<?php echo esc_attr($target); ?>"
+                                    class="submenu--image-link text-[17px] leading-6 text-gray-700 hover:text-red focus:text-red no-underline block transition-colors group/item">
+                                    <div class="flex rounded-lg border-b border-gray-200 md:border items-center overflow-hidden no-underline bg-white hover:shadow-md transition-all">
+                                      <?php if ($image_src) : ?>
+                                        <img width="150" height="150" src="<?php echo esc_url($image_src); ?>" class="menu-image object-cover w-28 h-28 m-0 hidden md:block rounded-l-lg grayscale group-hover/item:grayscale-0 transition-all shrink-0" alt="<?php echo esc_attr($image_alt); ?>">
+                                      <?php endif; ?>
+                                      <?php if ($title) : ?>
+                                        <span class="text-lg py-4 px-6 font-normal"><?php echo esc_html($title); ?></span>
+                                      <?php endif; ?>
+                                    </div>
+                                  </a>
+                                </li>
+                              <?php endforeach; ?>
+                            </ul>
+                          <?php endif; ?>
+                        </div>
+                      <?php endforeach; ?>
+                    </div>
+                  <?php endif; ?>
                 </div>
+
               <?php endif; ?>
             </li>
           <?php endwhile; ?>
