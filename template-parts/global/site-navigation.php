@@ -29,9 +29,11 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
 
             // Link Classes
             $link_classes = 'parent--link font-semibold text-xl text-body no-underline flex px-4 py-[18px] gap-x-3 items-center group-hover:text-red focus:text-red transition-colors';
-          ?>
 
-            <li class="menu--li pr-5 group static">
+            // Positioning Class (Megamenu needs static parent for full-width, Dropdown needs relative)
+            $li_position_class = ($submenu_type === 'megamenu') ? 'static' : 'relative';
+          ?>
+            <li class="menu--li pr-5 group <?php echo $li_position_class; ?>">
               <a href="<?php echo esc_url($menu_item_url); ?>"
                 target="<?php echo esc_attr($menu_item_target); ?>"
                 class="<?php echo esc_attr($link_classes); ?>"
@@ -41,7 +43,7 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
 
                 <?php if ($has_submenu): ?>
                   <span class="inline-block transition-transform duration-200 group-hover:-rotate-180 group-focus-within:-rotate-180">
-                    <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 336.36">
+                    <svg class="w-2 h-2 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 336.36">
                       <path d="M42.47.01 469.5 0C492.96 0 512 19.04 512 42.5c0 11.07-4.23 21.15-11.17 28.72L294.18 320.97c-14.93 18.06-41.7 20.58-59.76 5.65-1.8-1.49-3.46-3.12-4.97-4.83L10.43 70.39C-4.97 52.71-3.1 25.86 14.58 10.47 22.63 3.46 32.57.02 42.47.01z" />
                     </svg>
                   </span>
@@ -55,7 +57,7 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                 $megamenu_submenu_repeater = $megamenu_items['submenu_group'] ?? [];
                 $megamenu_image_grid_repeater = $megamenu_items['images_grid_group'] ?? [];
               ?>
-                <div class="megamenu--submenu absolute left-0 right-0 top-full bg-off-white p-8 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50 border-t border-gray-100">
+                <div class="megamenu--submenu absolute left-0 right-0 top-full bg-off-white p-8 rounded-b-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50 border-t border-gray-100">
 
                   <?php if ($megamenu_heading): ?>
                     <div class="megamenu--heading hidden md:block mb-6 px-4">
@@ -70,6 +72,9 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                         $submenu_items = $submenu['submenu_items'] ?? [];
                       ?>
                         <div class="px-4 pb-4">
+                          <?php if (!empty($submenu_heading)): ?>
+                            <div class="text-xl font-semibold mb-4"><?php echo esc_html($submenu_heading); ?></div>
+                          <?php endif; ?>
                           <?php if (!empty($submenu_items)): ?>
                             <ul class="submenu--ul space-y-2">
                               <?php foreach ($submenu_items as $item):
@@ -81,7 +86,7 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                                 <li class="submenu--li">
                                   <a href="<?php echo esc_url($url); ?>"
                                     target="<?php echo esc_attr($target); ?>"
-                                    class="submenu--link text-[17px] leading-6 text-grey hover:text-red focus:text-red no-underline inline-block py-1 transition-colors">
+                                    class="submenu--link text-lg text-grey hover:text-red focus:text-red no-underline inline-block py-3 transition-colors">
                                     <?php echo esc_html($title); ?>
                                   </a>
                                 </li>
@@ -139,7 +144,29 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                     </div>
                   <?php endif; ?>
                 </div>
+              <?php endif; ?>
 
+              <?php if ($has_submenu && $submenu_type === 'dropdown'):
+                $dropdown_menu_items = get_sub_field('dropdown_menu_items');
+                $dropdown_menu_repeater = $dropdown_menu_items['submenu_items'] ?? [];
+              ?>
+                <ul class="dropdown--submenu absolute top-full left-0 min-w-full w-auto whitespace-nowrap bg-off-white rounded-b-lg shadow-lg py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0 z-50">
+                  <?php
+                  foreach ($dropdown_menu_repeater as $menu) :
+                    $link = $menu['submenu_link'] ?? [];
+                    $title = $link['title'] ?? '';
+                    $url = $link['url'] ?? '#';
+                    $target = $link['target'] ?? '_self';
+                  ?>
+                    <li class="dropdown--item px-4 lg:px-6">
+                      <a href="<?php echo esc_url($url); ?>"
+                        target="<?php echo esc_attr($target); ?>"
+                        class="submenu--link text-lg text-grey hover:text-red focus:text-red no-underline block py-3 transition-colors">
+                        <?php echo esc_html($title); ?>
+                      </a>
+                    </li>
+                  <?php endforeach; ?>
+                </ul>
               <?php endif; ?>
             </li>
           <?php endwhile; ?>

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.10] - 2025-12-26
+
+### Added
+- **Navigation:** Implemented standard dropdown menu support alongside the mega menu.
+    - Added dynamic `relative`/`static` positioning logic to parent menu items based on submenu type.
+    - Configured dropdowns with dynamic width (`min-w-full`) and horizontal scrolling prevention (`whitespace-nowrap`).
+
 ## [2.2.9] - 2025-12-26
 
 ### Added
