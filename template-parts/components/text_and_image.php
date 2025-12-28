@@ -46,15 +46,15 @@ $image_order = ($image_side === 'left') ? 'md:order-1' : 'md:order-2';
                 <?php endif; ?>
 
                 <?php if ($text) : ?>
-                    <div class="prose max-w-none text-lg text-gray-700 mb-8">
+                    <div class="prose max-w-none text-lg text-default mb-8">
                         <?php echo wp_kses_post($text); ?>
                     </div>
                 <?php endif; ?>
 
-                <?php 
-                if ( $add_button && $button_link ) : 
-                    $btn_class = ($button_style === 'secondary') 
-                        ? 'bg-transparent border-2 border-purple text-purple hover:bg-purple/10' 
+                <?php
+                if ($add_button && $button_link) :
+                    $btn_class = ($button_style === 'secondary')
+                        ? 'bg-transparent border-2 border-purple text-purple hover:bg-purple/10'
                         : 'bg-red text-white border-2 border-transparent hover:opacity-90';
                 ?>
                     <div>

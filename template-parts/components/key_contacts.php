@@ -61,7 +61,7 @@ $bg_style      = goodshep_get_bg_image_style();
               <?php endif; ?>
 
               <?php if ($desc) : ?>
-                <div class="text-base mb-4 text-gray-700">
+                <div class="text-base mb-4 text-default">
                   <?php echo wp_kses_post($desc); ?>
                 </div>
               <?php endif; ?>

@@ -48,7 +48,7 @@ $bg_style      = goodshep_get_bg_image_style();
                 <h3 class="text-xl font-semibold mb-4 pr-8"><?php echo esc_html($card_title); ?></h3>
               <?php endif; ?>
 
-              <div class="text-base leading-loose text-gray-700">
+              <div class="text-base leading-loose text-default">
                 <?php echo wp_kses_post($card_text); ?>
               </div>
             </div>

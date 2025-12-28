@@ -22,7 +22,7 @@ $bg_style      = goodshep_get_bg_image_style();
         <?php endif; ?>
 
         <?php if ($text) : ?>
-            <div class="mb-16 prose max-w-none text-lg text-gray-700">
+            <div class="mb-16 prose max-w-none text-lg text-default">
                 <?php echo wp_kses_post($text); ?>
             </div>
         <?php endif; ?>
@@ -58,44 +58,44 @@ $bg_style      = goodshep_get_bg_image_style();
                             <?php endif; ?>
 
                             <!-- Icon Overlay -->
-                            <?php if ( $icon ) : ?>
+                            <?php if ($icon) : ?>
                                 <div class="absolute bottom-0 right-0 -mb-10 mr-8 flex items-center justify-center h-20 w-20 bg-purple rounded-full p-3 z-10">
-                                    <?php echo goodshep_icon( array( 'icon' => $icon, 'class' => 'h-10 w-10 text-white fill-current' ) ); ?>
+                                    <?php echo goodshep_icon(array('icon' => $icon, 'class' => 'h-10 w-10 text-white fill-current')); ?>
                                 </div>
                             <?php endif; ?>
                         </div>
 
                         <!-- Body -->
                         <div class="pt-14 px-8 pb-8 flex flex-col grow">
-                            
-                            <?php if ( $date ) : ?>
+
+                            <?php if ($date) : ?>
                                 <div class="text-base text-gray-500 mb-2">
-                                    <?php echo esc_html( date_i18n( 'd F Y', strtotime( $date ) ) ); ?>
+                                    <?php echo esc_html(date_i18n('d F Y', strtotime($date))); ?>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ( $card_title ) : ?>
+                            <?php if ($card_title) : ?>
                                 <h3 class="text-2xl lg:text-3xl font-semibold mb-6">
-                                    <?php if ( $card_url ) : ?>
-                                        <a href="<?php echo esc_url( $card_url ); ?>" class="text-gray-900 hover:text-purple transition-colors no-underline">
-                                            <?php echo esc_html( $card_title ); ?>
+                                    <?php if ($card_url) : ?>
+                                        <a href="<?php echo esc_url($card_url); ?>" class="text-gray-900 hover:text-purple transition-colors no-underline">
+                                            <?php echo esc_html($card_title); ?>
                                         </a>
                                     <?php else : ?>
-                                        <?php echo esc_html( $card_title ); ?>
+                                        <?php echo esc_html($card_title); ?>
                                     <?php endif; ?>
                                 </h3>
                             <?php endif; ?>
 
-                            <?php if ( $card_text ) : ?>
-                                <div class="mb-8 leading-loose text-gray-700">
-                                    <?php echo wp_kses_post( $card_text ); ?>
+                            <?php if ($card_text) : ?>
+                                <div class="mb-8 leading-loose text-default">
+                                    <?php echo wp_kses_post($card_text); ?>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if ( $button_text && $card_url ) : ?>
+                            <?php if ($button_text && $card_url) : ?>
                                 <div class="mt-auto">
-                                    <a href="<?php echo esc_url( $card_url ); ?>" class="text-red font-medium uppercase tracking-wider hover:opacity-80 transition-opacity no-underline">
-                                        <?php echo esc_html( $button_text ); ?>
+                                    <a href="<?php echo esc_url($card_url); ?>" class="text-red font-medium uppercase tracking-wider hover:opacity-80 transition-opacity no-underline">
+                                        <?php echo esc_html($button_text); ?>
                                     </a>
                                 </div>
                             <?php endif; ?>

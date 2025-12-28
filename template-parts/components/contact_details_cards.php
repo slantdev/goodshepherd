@@ -46,7 +46,7 @@ $bg_style      = goodshep_get_bg_image_style();
                       </div>
                     <?php endif; ?>
 
-                    <div class="prose max-w-none leading-relaxed text-gray-700">
+                    <div class="prose max-w-none leading-relaxed text-default">
                       <?php echo wp_kses_post($text); ?>
                     </div>
                   </div>

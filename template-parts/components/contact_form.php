@@ -39,7 +39,7 @@ $socials = [
                 <?php endif; ?>
 
                 <?php if ($text) : ?>
-                    <div class="prose max-w-none mb-8 text-lg text-gray-700">
+                    <div class="prose max-w-none mb-8 text-lg text-default">
                         <?php echo wp_kses_post($text); ?>
                     </div>
                 <?php endif; ?>

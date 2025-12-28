@@ -91,7 +91,7 @@ $content   = $lightbox['content'] ?? [];
     <h3 class="text-3xl font-bold text-red mb-4"><?php the_title(); ?></h3>
 
     <?php if (! empty($content['lead_text'])) : ?>
-      <div class="text-lg font-medium text-gray-700 mb-6">
+      <div class="text-lg font-medium text-default mb-6">
         <?php echo wp_kses_post($content['lead_text']); ?>
       </div>
     <?php endif; ?>

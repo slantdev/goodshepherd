@@ -30,32 +30,32 @@ $bg_style      = goodshep_get_bg_image_style();
                     $button_text = get_sub_field('button_text');
                     $button_link = get_sub_field('button_link');
                 ?>
-                                        <div class="p-10 border border-gray-400 rounded-lg h-full flex flex-col relative bg-white hover:shadow-lg transition-shadow">
-                                            
-                                            <?php if ( $card_title ) : ?>
-                                                <h3 class="text-2xl text-purple font-semibold mb-4"><?php echo esc_html( $card_title ); ?></h3>
-                                            <?php endif; ?>
-                    
-                                            <?php if ( $card_text ) : ?>
-                                                <div class="mb-auto leading-loose text-gray-700">
-                                                    <?php echo wp_kses_post( $card_text ); ?>
-                                                </div>
-                                            <?php endif; ?>
-                    
-                                            <?php 
-                                            if ( $add_button && $button_link ) : 
-                                                $url = is_array( $button_link ) ? $button_link['url'] : $button_link;
-                                                $target = is_array( $button_link ) ? ( $button_link['target'] ?: '_self' ) : '_self';
-                                            ?>
-                                                <div class="mt-6 text-base">
-                                                    <a href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>" 
-                                                       class="text-red font-medium uppercase hover:opacity-80 transition-opacity no-underline">
-                                                        <?php echo esc_html( $button_text ); ?>
-                                                    </a>
-                                                </div>
-                                            <?php endif; ?>
-                    
-                                        </div>
+                    <div class="p-10 border border-gray-400 rounded-lg h-full flex flex-col relative bg-white hover:shadow-lg transition-shadow">
+
+                        <?php if ($card_title) : ?>
+                            <h3 class="text-2xl text-purple font-semibold mb-4"><?php echo esc_html($card_title); ?></h3>
+                        <?php endif; ?>
+
+                        <?php if ($card_text) : ?>
+                            <div class="mb-auto leading-loose text-default">
+                                <?php echo wp_kses_post($card_text); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php
+                        if ($add_button && $button_link) :
+                            $url = is_array($button_link) ? $button_link['url'] : $button_link;
+                            $target = is_array($button_link) ? ($button_link['target'] ?: '_self') : '_self';
+                        ?>
+                            <div class="mt-6 text-base">
+                                <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>"
+                                    class="text-red font-medium uppercase hover:opacity-80 transition-opacity no-underline">
+                                    <?php echo esc_html($button_text); ?>
+                                </a>
+                            </div>
+                        <?php endif; ?>
+
+                    </div>
                 <?php endwhile; ?>
             </div>
         <?php endif; ?>

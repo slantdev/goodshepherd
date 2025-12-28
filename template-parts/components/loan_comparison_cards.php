@@ -53,68 +53,70 @@ $bg_style      = goodshep_get_bg_image_style();
                         ],
                     ];
                 ?>
-                                        <div class="border border-gray-400 rounded-lg px-6 py-8 divide-y divide-gray-200 bg-white h-full flex flex-col">
-                                            
-                                            <!-- Section 1: Header & Features -->
-                                            <div class="pb-6 grow">
-                                                <?php if ( $icon ) : ?>
-                                                    <div class="mb-6 w-12 h-12 text-purple">
-                                                        <?php echo goodshep_icon( array( 'icon' => $icon, 'class' => 'w-12 h-12 fill-current' ) ); ?>
-                                                    </div>
-                                                <?php endif; ?>
-                    
-                                                <?php if ( $title_01 ) : ?>
-                                                    <h3 class="text-2xl font-semibold mb-2 text-gray-900"><?php echo esc_html( $title_01 ); ?></h3>
-                                                <?php endif; ?>
-                    
-                                                <?php if ( $text_01 ) : ?>
-                                                    <div class="text-gray-700 mb-4"><?php echo wp_kses_post( $text_01 ); ?></div>
-                                                <?php endif; ?>
-                    
-                                                <?php if ( have_rows('list') ) : ?>
-                                                    <div class="mt-4 space-y-2">
-                                                        <?php while ( have_rows('list') ) : the_row(); 
-                                                            $item = get_sub_field('list_item');
-                                                        ?>
-                                                            <div class="flex items-start">
-                                                                <div class="shrink-0 mr-3 mt-1 text-green-500">
-                                                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                                                </div>
-                                                                <span class="text-sm"><?php echo esc_html( $item ); ?></span>
-                                                            </div>
-                                                        <?php endwhile; ?>
-                                                    </div>
-                                                <?php endif; ?>
+                    <div class="border border-gray-400 rounded-lg px-6 py-8 divide-y divide-gray-200 bg-white h-full flex flex-col">
+
+                        <!-- Section 1: Header & Features -->
+                        <div class="pb-6 grow">
+                            <?php if ($icon) : ?>
+                                <div class="mb-6 w-12 h-12 text-purple">
+                                    <?php echo goodshep_icon(array('icon' => $icon, 'class' => 'w-12 h-12 fill-current')); ?>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if ($title_01) : ?>
+                                <h3 class="text-2xl font-semibold mb-2 text-gray-900"><?php echo esc_html($title_01); ?></h3>
+                            <?php endif; ?>
+
+                            <?php if ($text_01) : ?>
+                                <div class="text-default mb-4"><?php echo wp_kses_post($text_01); ?></div>
+                            <?php endif; ?>
+
+                            <?php if (have_rows('list')) : ?>
+                                <div class="mt-4 space-y-2">
+                                    <?php while (have_rows('list')) : the_row();
+                                        $item = get_sub_field('list_item');
+                                    ?>
+                                        <div class="flex items-start">
+                                            <div class="shrink-0 mr-3 mt-1 text-green-500">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
                                             </div>
-                    
-                                            <!-- Section 2: Buttons -->
-                                            <div class="py-8">
-                                                <?php if ( $title_02 ) : ?>
-                                                    <h3 class="text-xl font-semibold mb-6 text-gray-900"><?php echo esc_html( $title_02 ); ?></h3>
-                                                <?php endif; ?>
-                    
-                                                <div class="grid grid-cols-2 gap-3">
-                                                    <?php 
-                                                    // Button 1 (Secondary style in ref)
-                                                    if ( ! empty( $btn1_group['add_button'] ) && ! empty( $btn1_group['button_link'] ) ) : 
-                                                        $b1 = $btn1_group;
-                                                    ?>
-                                                        <a href="<?php echo esc_url( $b1['button_link'] ); ?>" class="text-center py-3 border border-purple text-purple rounded font-medium hover:opacity-80 transition-opacity no-underline text-sm">
-                                                            <?php echo esc_html( $b1['button_text'] ); ?>
-                                                        </a>
-                                                    <?php endif; ?>
-                    
-                                                    <?php 
-                                                    // Button 2 (Primary style in ref)
-                                                    if ( ! empty( $btn2_group['add_button'] ) && ! empty( $btn2_group['button_link'] ) ) : 
-                                                        $b2 = $btn2_group;
-                                                    ?>
-                                                        <a href="<?php echo esc_url( $b2['button_link'] ); ?>" class="text-center py-3 bg-red text-white rounded font-medium hover:opacity-90 transition-opacity no-underline text-sm">
-                                                            <?php echo esc_html( $b2['button_text'] ); ?>
-                                                        </a>
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
+                                            <span class="text-sm"><?php echo esc_html($item); ?></span>
+                                        </div>
+                                    <?php endwhile; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <!-- Section 2: Buttons -->
+                        <div class="py-8">
+                            <?php if ($title_02) : ?>
+                                <h3 class="text-xl font-semibold mb-6 text-gray-900"><?php echo esc_html($title_02); ?></h3>
+                            <?php endif; ?>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <?php
+                                // Button 1 (Secondary style in ref)
+                                if (! empty($btn1_group['add_button']) && ! empty($btn1_group['button_link'])) :
+                                    $b1 = $btn1_group;
+                                ?>
+                                    <a href="<?php echo esc_url($b1['button_link']); ?>" class="text-center py-3 border border-purple text-purple rounded font-medium hover:opacity-80 transition-opacity no-underline text-sm">
+                                        <?php echo esc_html($b1['button_text']); ?>
+                                    </a>
+                                <?php endif; ?>
+
+                                <?php
+                                // Button 2 (Primary style in ref)
+                                if (! empty($btn2_group['add_button']) && ! empty($btn2_group['button_link'])) :
+                                    $b2 = $btn2_group;
+                                ?>
+                                    <a href="<?php echo esc_url($b2['button_link']); ?>" class="text-center py-3 bg-red text-white rounded font-medium hover:opacity-90 transition-opacity no-underline text-sm">
+                                        <?php echo esc_html($b2['button_text']); ?>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                         <!-- Section 3: Details -->
                         <div class="pt-8 space-y-6">
                             <?php foreach ($points as $point) :

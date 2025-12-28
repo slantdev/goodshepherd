@@ -46,7 +46,7 @@ $bg_style      = goodshep_get_bg_image_style();
             </div>
 
             <?php if ($card_text) : ?>
-              <div class="mb-auto leading-loose text-gray-700">
+              <div class="mb-auto leading-loose text-default">
                 <?php echo wp_kses_post($card_text); ?>
               </div>
             <?php endif; ?>

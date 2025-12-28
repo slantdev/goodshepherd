@@ -22,7 +22,7 @@ $bg_style      = goodshep_get_bg_image_style();
     <?php endif; ?>
 
     <?php if ($text) : ?>
-      <div class="mb-16 prose max-w-none text-lg text-gray-700">
+      <div class="mb-16 prose max-w-none text-lg text-default">
         <?php echo wp_kses_post($text); ?>
       </div>
     <?php endif; ?>
@@ -59,7 +59,7 @@ $bg_style      = goodshep_get_bg_image_style();
               <?php endif; ?>
 
               <?php if ($card_text) : ?>
-                <div class="text-gray-700 mb-6 grow">
+                <div class="text-default mb-6 grow">
                   <?php echo wp_kses_post($card_text); ?>
                 </div>
               <?php endif; ?>

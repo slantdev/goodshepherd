@@ -38,7 +38,7 @@ $bg_style      = goodshep_get_bg_image_style();
                 <?php endif; ?>
 
                 <?php if ($text) : ?>
-                    <div class="prose max-w-none mb-8 text-gray-700">
+                    <div class="prose max-w-none mb-8 text-default">
                         <?php echo wp_kses_post($text); ?>
                     </div>
                 <?php endif; ?>

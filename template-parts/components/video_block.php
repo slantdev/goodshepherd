@@ -38,19 +38,19 @@ if ($count === 2) {
                 <?php endif; ?>
 
                 <?php if ($text) : ?>
-                    <div class="prose max-w-none text-lg text-gray-700 mb-6">
+                    <div class="prose max-w-none text-lg text-default mb-6">
                         <?php echo wp_kses_post($text); ?>
                     </div>
                 <?php endif; ?>
 
-                <?php 
-                if ( $add_button && $button_link ) : 
-                    $url = is_array( $button_link ) ? $button_link['url'] : $button_link;
-                    $target = is_array( $button_link ) ? ( $button_link['target'] ?: '_self' ) : '_self';
+                <?php
+                if ($add_button && $button_link) :
+                    $url = is_array($button_link) ? $button_link['url'] : $button_link;
+                    $target = is_array($button_link) ? ($button_link['target'] ?: '_self') : '_self';
                 ?>
-                    <a href="<?php echo esc_url( $url ); ?>" target="<?php echo esc_attr( $target ); ?>" 
-                       class="inline-block bg-red text-white font-bold py-3 px-8 rounded hover:opacity-90 transition-colors no-underline">
-                        <?php echo esc_html( $button_text ); ?>
+                    <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>"
+                        class="inline-block bg-red text-white font-bold py-3 px-8 rounded hover:opacity-90 transition-colors no-underline">
+                        <?php echo esc_html($button_text); ?>
                     </a>
                 <?php endif; ?>
             </div>

@@ -125,7 +125,7 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
                                 <li class="submenu--li">
                                   <a href="<?php echo esc_url($url); ?>"
                                     target="<?php echo esc_attr($target); ?>"
-                                    class="submenu--image-link text-[17px] leading-6 text-gray-700 hover:text-red focus:text-red no-underline block transition-colors group/item">
+                                    class="submenu--image-link text-[17px] leading-6 text-default hover:text-red focus:text-red no-underline block transition-colors group/item">
                                     <div class="flex rounded-lg border-b border-gray-200 md:border items-center overflow-hidden no-underline bg-white hover:shadow-md transition-all">
                                       <?php if ($image_src) : ?>
                                         <img width="150" height="150" src="<?php echo esc_url($image_src); ?>" class="menu-image object-cover w-28 h-28 m-0 hidden md:block rounded-l-lg grayscale group-hover/item:grayscale-0 transition-all shrink-0" alt="<?php echo esc_attr($image_alt); ?>">
