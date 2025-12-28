@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply text-default bg-white font-sans antialiased;
+    @apply text-default bg-white font-sans font-normal antialiased md:text-lg;
     line-height: 1.67;
   }
 

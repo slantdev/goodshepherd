@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Added JavaScript logic for toggling visibility, icon switching, and autofocus.
     - Enhanced `searchform.php` with accessibility and improved styling.
     - Added keyboard (Escape) and click-outside support to close search.
+    - **Refactor:** Unified mobile and desktop search toggles to control a single global search form container in the header.
 
 ## [2.2.10] - 2025-12-26
 

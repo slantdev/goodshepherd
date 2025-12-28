@@ -173,8 +173,9 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
         </ul>
       </nav>
 
-      <div class="header-search relative ml-4 hidden lg:block">
-        <button id="search-toggle" class="flex items-center focus:outline-none hover:text-purple cursor-pointer transition-colors p-5" aria-expanded="false" aria-controls="header-search-form" aria-label="<?php esc_attr_e('Toggle search', 'goodshep-theme'); ?>">
+      <!-- Desktop Search Toggle -->
+      <div class="header-search relative ml-4 border-l border-gray-200 pl-4 hidden lg:block">
+        <button class="js-search-toggle flex items-center text-purple focus:outline-none hover:text-off-black transition-colors p-2" aria-expanded="false" aria-controls="header-search-form" aria-label="<?php esc_attr_e('Toggle search', 'goodshep-theme'); ?>">
           <span class="search-icon block">
             <?php echo goodshep_icon(array('icon' => 'search', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
           </span>
@@ -182,10 +183,6 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
             <?php echo goodshep_icon(array('icon' => 'close', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
           </span>
         </button>
-
-        <div id="header-search-form" class="hidden absolute right-0 top-full bg-off-white shadow-lg p-4 z-50 w-80 rounded-b-lg">
-          <?php get_search_form(); ?>
-        </div>
       </div>
 
     </div>

@@ -38,12 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Search Toggle Logic
-    const searchToggle = document.getElementById('search-toggle');
+    const searchToggles = document.querySelectorAll('.js-search-toggle');
     const searchFormContainer = document.getElementById('header-search-form');
     
-    if (searchToggle && searchFormContainer) {
-        const searchIcon = searchToggle.querySelector('.search-icon');
-        const closeIcon = searchToggle.querySelector('.close-icon');
+    if (searchToggles.length > 0 && searchFormContainer) {
         const searchInput = searchFormContainer.querySelector('input.search-field');
 
         const toggleSearch = (show) => {
@@ -52,41 +50,62 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isShowing) {
                 // Show
                 searchFormContainer.classList.remove('hidden');
-                searchToggle.setAttribute('aria-expanded', 'true');
-                searchIcon?.classList.add('hidden');
-                closeIcon?.classList.remove('hidden');
+                
+                // Update all toggles
+                searchToggles.forEach(btn => {
+                    btn.setAttribute('aria-expanded', 'true');
+                    btn.querySelector('.search-icon')?.classList.add('hidden');
+                    btn.querySelector('.close-icon')?.classList.remove('hidden');
+                });
+
                 if (searchInput) {
                     setTimeout(() => searchInput.focus(), 50);
                 }
             } else {
                 // Hide
                 searchFormContainer.classList.add('hidden');
-                searchToggle.setAttribute('aria-expanded', 'false');
-                searchIcon?.classList.remove('hidden');
-                closeIcon?.classList.add('hidden');
+                
+                // Update all toggles
+                searchToggles.forEach(btn => {
+                    btn.setAttribute('aria-expanded', 'false');
+                    btn.querySelector('.search-icon')?.classList.remove('hidden');
+                    btn.querySelector('.close-icon')?.classList.add('hidden');
+                });
             }
         };
 
-        // Click Handler
-        searchToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            toggleSearch();
+        // Click Handler for all toggles
+        searchToggles.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleSearch();
+            });
         });
 
         // Close on Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && !searchFormContainer.classList.contains('hidden')) {
                 toggleSearch(false);
-                searchToggle.focus();
+                // Focus the first visible toggle button
+                const visibleToggle = Array.from(searchToggles).find(btn => btn.offsetParent !== null);
+                if (visibleToggle) visibleToggle.focus();
             }
         });
 
         // Close on Click Outside
         document.addEventListener('click', (e) => {
             if (!searchFormContainer.classList.contains('hidden') && 
-                !searchFormContainer.contains(e.target) && 
-                !searchToggle.contains(e.target)) {
-                toggleSearch(false);
+                !searchFormContainer.contains(e.target)) {
+                
+                // Check if the click target is NOT one of the toggle buttons
+                let isToggleClick = false;
+                searchToggles.forEach(btn => {
+                    if (btn.contains(e.target)) isToggleClick = true;
+                });
+
+                if (!isToggleClick) {
+                    toggleSearch(false);
+                }
             }
         });
     }
