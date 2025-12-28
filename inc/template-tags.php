@@ -190,7 +190,7 @@ function goodshep_map_color_class($color_name)
 function preint_r($data)
 {
   //if ( current_user_can( 'manage_options' ) ) {
-  echo '<pre style="background: #fff; color: #000; padding: 10px; z-index: 9999; position: relative; border: 1px solid red; text-align: left;">';
+  echo '<pre style="background: #fff; color: #000; padding: 10px; z-index: 9999; position: relative; border: 1px solid red; text-align: left;" class="text-xs leading-none">';
   print_r($data);
   echo '</pre>';
   //}

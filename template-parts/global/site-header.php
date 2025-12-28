@@ -62,31 +62,7 @@
 
 	<!-- Desktop Navigation -->
 	<div class="site-nav hidden md:bg-off-white lg:block z-50 relative">
-		<div class="container mx-auto px-4 flex justify-between items-center relative">
-			<nav id="site-navigation" class="main-navigation w-full" role="navigation" aria-label="<?php esc_attr_e('Primary Menu', 'goodshep-theme'); ?>">
-				<?php
-				wp_nav_menu(array(
-					'theme_location' => 'primary',
-					'menu_id'        => 'primary-menu',
-					'container'      => false,
-					'menu_class'     => 'flex flex-wrap gap-x-8 text-base font-medium text-off-black py-4',
-				));
-				?>
-			</nav>
-
-			<!-- Desktop Search Toggle -->
-			<div class="header-search-toggle ml-4 border-l border-gray-200 pl-4">
-				<button id="search-toggle" class="flex items-center text-purple focus:outline-none hover:text-off-black transition-colors">
-					<span class="sr-only"><?php esc_html_e('Search', 'goodshep-theme'); ?></span>
-					<?php echo goodshep_icon(array('icon' => 'search', 'group' => 'utility', 'class' => 'w-6 h-6')); ?>
-				</button>
-			</div>
-
-			<!-- Desktop Search Form (Hidden by default) -->
-			<div id="header-search-form" class="hidden absolute right-0 top-full bg-white shadow-lg p-4 z-50 w-80 border-t border-gray-100">
-				<?php get_search_form(); ?>
-			</div>
-		</div>
+		<?php get_template_part('template-parts/global/site-navigation'); ?>
 	</div>
 
 	<!-- Mobile Menu (Hidden by default) -->

@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.9] - 2025-12-26
+
+### Added
+- **Mega Menu:** Implemented accessible, full-width mega menu navigation in `template-parts/global/site-navigation.php`.
+    - Utilized Tailwind `group` utilities for hover and focus states.
+    - Added ARIA attributes for better accessibility.
+    - Configured dynamic column layout via ACF repeater fields.
+
 ## [2.2.8] - 2025-12-26
 
 ### Fixed
