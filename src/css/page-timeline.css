@@ -36,19 +36,6 @@
 
 .timeline-entries {
   .timeline-section {
-    .timeline-border-center {
-      /* Ensure this exists as it was referenced in PHP but not explicitly style block in my previous cat output maybe? 
-         Wait, looking at PHP: class="timeline-border-center absolute ..."
-         It has utility classes. The SCSS had specific overrides?
-         Looking at cat output again:
-         .timeline-section {
-            .timeline-border-top { ... }
-            &:first-child { .timeline-border-center { @apply top-0; } }
-            &:last-child { .timeline-border-center { @apply bottom-0; } ... }
-            .timeline-content { ... }
-         }
-      */
-    }
     .timeline-border-top {
       background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='#86774F' stroke-width='3' stroke-dasharray='3%2c 9' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
       background-repeat: repeat;

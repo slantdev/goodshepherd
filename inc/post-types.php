@@ -183,3 +183,13 @@ function goodshep_generate_taxonomy_rewrite_rules( $wp_rewrite ) {
 	$wp_rewrite->rules = $rules + $wp_rewrite->rules;
 }
 add_action( 'generate_rewrite_rules', 'goodshep_generate_taxonomy_rewrite_rules' );
+
+/**
+ * Change amount of posts returned by REST API to unlimited for Service Providers
+ */
+function goodshep_rest_service_provider_per_page( $args, $request ) {
+    $max = max( (int)$request->get_param( 'per_page' ), 999999 );
+    $args['posts_per_page'] = $max;
+    return $args;
+}
+add_filter( 'rest_service_provider_query', 'goodshep_rest_service_provider_per_page', 10, 2 );

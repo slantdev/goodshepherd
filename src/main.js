@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { initTimeline } from './js/page-timeline.js';
+import { initServiceLocator } from './js/page-service-locator.js';
 
 // Initialize Fancybox
 Fancybox.bind("[data-fancybox]", {
@@ -24,6 +25,9 @@ Fancybox.bind("[data-fancybox]", {
 document.addEventListener('DOMContentLoaded', () => {
     // Timeline
     initTimeline();
+    
+    // Service Locator
+    initServiceLocator();
 
     // Swiper
     const swipers = document.querySelectorAll('.swiper');

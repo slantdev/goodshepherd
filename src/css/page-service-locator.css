@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@reference "./theme.css";
+
+/* Service Locator Styles */
+
+.service_locator-content {
+    display: flex;
+    flex-direction: column;
+}
+@media (min-width: 768px) {
+    .service_locator-content {
+        flex-direction: row;
+    }
+}
+
+.service_locator-sidebar {
+    position: relative;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .service_locator-sidebar {
+        width: 400px;
+        flex-shrink: 0;
+    }
+}
+
+.service_locator-map {
+    display: none;
+    flex-grow: 1;
+}
+@media (min-width: 768px) {
+    .service_locator-map {
+        display: block;
+        width: calc(100% - 400px);
+    }
+}
+
+.service_locator-details_panel {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 210;
+    background: #fff;
+    opacity: 0;
+    overflow: hidden;
+    transform: translate3d(-100%,0,0);
+    transition: all .3s cubic-bezier(.74,.25,.01,1);
+}
+@media (min-width: 768px) {
+    .service_locator-details_panel {
+        width: 400px;
+    }
+}
+
+.service_locator-details.open .service_locator-details_panel {
+    opacity: 1;
+    transform: translate3d(0,0,0);
+}
+
+.service_locator-details_panel .panel_content {
+    top: 4rem;
+    bottom: 4rem;
+}
+
+.service_locator-details_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    visibility: hidden;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(.74,.25,.01,1);
+    will-change: opacity;
+}
+
+.service_locator-details.open .service_locator-details_overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+#service_locator-info_bar {
+    height: 56px;
+    display: flex;
+    align-items: center;
+}
+
+.service_locator-view-mode > button.active {
+    background-color: #b86aab; /* gs_purple */
+    color: white;
+}
+.service_locator-view-mode > button:focus, 
+.service_locator-view-mode > button:active {
+    outline: none;
+    box-shadow: none;
+}
+@media (min-width: 992px) {
+    .service_locator-view-mode {
+        display: none;
+    }
+}
+
+/* Google Maps Autocomplete overrides */
+.service_locator .pac-icon-marker {
+    display: none;
+}
+.service_locator .pac-logo:after {
+    display: none;
+}
+.service_locator .pac-item-query {
+    font-size: 14px;
+}
+.service_locator .pac-item {
+    font-size: 14px;
+    padding: 8px 16px;
+}
+
+#service_locator_form .mdc-text-field {
+    padding: 0;
+    height: 56px;
+}
+#service_locator_form .mdc-text-field__input {
+    padding: 0 16px;
+}
+
+/* Additional Banner Styles */
+.service_locator_banner .nils-logo {
+    max-width: 240px;
+}
+.service_locator_banner .contact_block a {
+    color: black;
+}
+.service_locator_banner .contact_block p {
+    margin: 0;
+}
+@media (min-width: 768px) {
+    .service_locator_banner .nils-logo {
+        max-width: 100%;
+    }
+}
+@media (min-width: 1500px) {
+    .service_locator_banner .logo_block {
+        width: 45%;
+    }
+    .service_locator_banner .contact_block {
+        width: 55%;
+    }
+    .service_locator_banner .contact_block .contact_item:first-child {
+        width: 25%;
+    }
+    .service_locator_banner .contact_block .contact_item:nth-child(2) {
+        width: 30%;
+    }
+    .service_locator_banner .contact_block .contact_item:nth-child(3) {
+        width: 32%;
+    }
+}

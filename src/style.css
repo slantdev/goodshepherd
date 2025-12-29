@@ -3,5 +3,6 @@
 @import "./css/global.css";
 @import "./css/components.css";
 @import "./css/page-timeline.css";
+@import "./css/page-service-locator.css";
 
 @plugin "@tailwindcss/typography";

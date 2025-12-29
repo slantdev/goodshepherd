@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.19] - 2025-12-26
+
+### Added
+- **Templates:** Ported `Service Locator` page template from reference.
+    - Integrated Google Maps API, MarkerClusterer, and Material Design Components.
+    - Ported styles to `src/css/page-service-locator.css`.
+    - Added `goodshep_rest_service_provider_per_page` filter to allow unlimited posts via REST API for service providers.
+
 ## [2.2.18] - 2025-12-26
 
 ### Added
