@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.20] - 2025-12-26
+
+### Added
+- **Components:** Created `featured_with_filter` component.
+    - Implemented interactive frontend filtering for info boxes.
+    - Integrated with ACF Flexible Content.
+    - Added CSS transitions and JavaScript logic for a smooth filtering experience.
+
 ## [2.2.19] - 2025-12-26
 
 ### Added

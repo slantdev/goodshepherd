@@ -299,6 +299,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial state check
     label.classList.add("top-1/2", "-translate-y-1/2", "scale-100");
   });
+
+  // Featured with Filter Logic
+  const filterSections = document.querySelectorAll(".js-featured-filter-section");
+  filterSections.forEach((section) => {
+    const filterBtns = section.querySelectorAll(".js-featured-filter-btn");
+    const items = section.querySelectorAll(".js-featured-filter-item");
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const filter = btn.getAttribute("data-filter");
+
+        // Update Active Button
+        filterBtns.forEach((b) => {
+          b.classList.remove("bg-purple", "text-white");
+          b.classList.add("text-purple");
+        });
+        btn.classList.add("bg-purple", "text-white");
+        btn.classList.remove("text-purple");
+
+        // Filter Items
+        items.forEach((item) => {
+          const category = item.getAttribute("data-category");
+          if (filter === "all" || category === filter) {
+            item.classList.remove("hidden");
+            // Fade in effect
+            setTimeout(() => {
+              item.style.opacity = "1";
+              item.style.transform = "translateY(0)";
+            }, 10);
+          } else {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(10px)";
+            setTimeout(() => {
+              item.classList.add("hidden");
+            }, 300);
+          }
+        });
+      });
+    });
+  });
 });
 
 console.log("Main JS Loaded");

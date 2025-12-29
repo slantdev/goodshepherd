@@ -98,6 +98,7 @@ $goodshep_acf_layouts = [
 	'cta_with_image',
 	'donate_now_form',
 	'download_pdf_block',
+	'featured_with_filter',
 	'four_card_block',
 	'four_logos_block' => 'gallery_block_01', // Mapped to existing image
 	'frequently_asked_questions',
