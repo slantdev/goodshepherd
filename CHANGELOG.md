@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.22] - 2025-12-26
+
+### Changed
+- **Components:** Enhanced `featured_with_filter` layout.
+    - Switched from CSS Grid to Swiper Slider (1 col mobile, 3 col desktop).
+    - Implemented post deduplication logic for items appearing in multiple filter groups.
+    - Updated filtering logic to handle multi-category data attributes.
+
 ## [2.2.21] - 2025-12-26
 
 ### Changed

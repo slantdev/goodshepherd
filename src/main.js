@@ -300,12 +300,37 @@ document.addEventListener('DOMContentLoaded', () => {
     label.classList.add("top-1/2", "-translate-y-1/2", "scale-100");
   });
 
-  // Featured with Filter Logic
+  // Featured with Filter Logic (Swiper)
   const filterSections = document.querySelectorAll(".js-featured-filter-section");
   filterSections.forEach((section) => {
-    const filterBtns = section.querySelectorAll(".js-featured-filter-btn");
-    const items = section.querySelectorAll(".js-featured-filter-item");
+    const sliderEl = section.querySelector(".featured-filter-slider");
+    if (!sliderEl) return;
 
+    // Initialize Swiper
+    const swiper = new Swiper(sliderEl, {
+      modules: [Navigation, Pagination],
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: sliderEl.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: sliderEl.querySelector(".swiper-button-next"),
+        prevEl: sliderEl.querySelector(".swiper-button-prev"),
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+
+    // Filtering
+    const filterBtns = section.querySelectorAll(".js-featured-filter-btn");
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -319,24 +344,30 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add("bg-purple", "text-white");
         btn.classList.remove("text-purple");
 
-        // Filter Items
-        items.forEach((item) => {
-          const category = item.getAttribute("data-category");
-          if (filter === "all" || category === filter) {
-            item.classList.remove("hidden");
-            // Fade in effect
-            setTimeout(() => {
-              item.style.opacity = "1";
-              item.style.transform = "translateY(0)";
-            }, 10);
-          } else {
-            item.style.opacity = "0";
-            item.style.transform = "translateY(10px)";
-            setTimeout(() => {
-              item.classList.add("hidden");
-            }, 300);
-          }
+        // Filter Slides
+        // Swiper stores slides in swiper.slides
+        // We can hide/show them by manipulating the DOM element directly
+        // Then call swiper.update()
+        
+        let hasMatches = false;
+        
+        swiper.slides.forEach((slide) => {
+            const categoriesStr = slide.getAttribute("data-categories") || "";
+            const categories = categoriesStr.split(" ");
+            
+            if (filter === "all" || categories.includes(filter)) {
+                slide.style.display = ""; // Show
+                hasMatches = true;
+            } else {
+                slide.style.display = "none"; // Hide
+            }
         });
+
+        // If no matches, maybe show a message? (Optional)
+        
+        // Important: Update Swiper to re-calculate layout
+        swiper.update();
+        swiper.slideTo(0); // Reset to first slide
       });
     });
   });

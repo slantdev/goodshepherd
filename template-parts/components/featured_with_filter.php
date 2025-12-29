@@ -61,65 +61,95 @@ $bg_style      = goodshep_get_bg_image_style();
             </div>
         <?php endif; ?>
 
-        <!-- Items Grid -->
-        <div class="featured-filter-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <?php 
-            foreach ($featured_content_groups as $group) : 
-                $filter_slug = $group['assigned_filter_slug'] ?? '';
-                $posts = $group['content_cards'] ?? []; // Relationship field
-                
-                if ($posts) :
-                    foreach ($posts as $post_obj) :
-                        $p_id = $post_obj->ID;
-                        $p_title = get_the_title($p_id);
-                        $p_link = get_permalink($p_id);
-                        $p_excerpt = get_the_excerpt($p_id);
-                        $p_thumb = get_the_post_thumbnail_url($p_id, 'large');
-            ?>
-                <div class="js-featured-filter-item flex flex-col h-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 group" 
-                     data-category="<?php echo esc_attr($filter_slug); ?>">
+        <!-- Items Grid / Slider -->
+        <div class="featured-filter-slider swiper relative pb-12">
+            <div class="swiper-wrapper">
+                <?php 
+                // 1. Process Data to Deduplicate Posts
+                $unique_posts = [];
+
+                foreach ($featured_content_groups as $group) {
+                    $filter_slug = $group['assigned_filter_slug'] ?? '';
+                    $posts = $group['content_cards'] ?? [];
+
+                    if ($posts) {
+                        foreach ($posts as $post_obj) {
+                            $p_id = $post_obj->ID;
+                            
+                            // If post already exists, just append the new filter category
+                            if (isset($unique_posts[$p_id])) {
+                                if ($filter_slug && !in_array($filter_slug, $unique_posts[$p_id]['categories'])) {
+                                    $unique_posts[$p_id]['categories'][] = $filter_slug;
+                                }
+                            } else {
+                                // Initialize post data
+                                $unique_posts[$p_id] = [
+                                    'obj' => $post_obj,
+                                    'categories' => $filter_slug ? [$filter_slug] : []
+                                ];
+                            }
+                        }
+                    }
+                }
+
+                // 2. Render Unique Posts
+                foreach ($unique_posts as $p_id => $item) :
+                    $post_obj = $item['obj'];
+                    $cats = implode(' ', $item['categories']); // Space separated for easy JS check
                     
-                    <!-- Image -->
-                    <div class="relative h-56 overflow-hidden">
-                        <?php if ($p_thumb) : ?>
-                            <img src="<?php echo esc_url($p_thumb); ?>" 
-                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                                 alt="<?php echo esc_attr($p_title); ?>">
-                        <?php else : ?>
-                            <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">
-                                <?php echo goodshep_icon(['icon' => 'search', 'class' => 'w-12 h-12']); // Fallback icon ?>
+                    $p_title = get_the_title($p_id);
+                    $p_link = get_permalink($p_id);
+                    $p_excerpt = get_the_excerpt($p_id);
+                    $p_thumb = get_the_post_thumbnail_url($p_id, 'large');
+                ?>
+                    <div class="swiper-slide js-featured-filter-item h-auto" data-categories="<?php echo esc_attr($cats); ?>">
+                        <div class="flex flex-col h-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 group">
+                            
+                            <!-- Image -->
+                            <div class="relative h-56 overflow-hidden flex-shrink-0">
+                                <?php if ($p_thumb) : ?>
+                                    <img src="<?php echo esc_url($p_thumb); ?>" 
+                                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                         alt="<?php echo esc_attr($p_title); ?>">
+                                <?php else : ?>
+                                    <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">
+                                        <?php echo goodshep_icon(['icon' => 'image', 'class' => 'w-12 h-12']); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
-                        <?php endif; ?>
-                    </div>
 
-                    <!-- Content -->
-                    <div class="p-8 flex flex-col grow">
-                        <h3 class="text-xl font-bold mb-4 text-gray-900 group-hover:text-purple transition-colors">
-                            <a href="<?php echo esc_url($p_link); ?>" class="no-underline">
-                                <?php echo esc_html($p_title); ?>
-                            </a>
-                        </h3>
+                            <!-- Content -->
+                            <div class="p-8 flex flex-col grow">
+                                <h3 class="text-xl font-bold mb-4 text-gray-900 group-hover:text-purple transition-colors">
+                                    <a href="<?php echo esc_url($p_link); ?>" class="no-underline">
+                                        <?php echo esc_html($p_title); ?>
+                                    </a>
+                                </h3>
 
-                        <?php if ($p_excerpt) : ?>
-                            <div class="text-base leading-relaxed text-gray-600 mb-6 grow line-clamp-3">
-                                <?php echo wp_kses_post($p_excerpt); ?>
+                                <?php if ($p_excerpt) : ?>
+                                    <div class="text-base leading-relaxed text-gray-600 mb-6 grow line-clamp-3">
+                                        <?php echo wp_kses_post($p_excerpt); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <div class="mt-auto">
+                                    <a href="<?php echo esc_url($p_link); ?>" 
+                                       class="inline-flex items-center text-red font-bold uppercase tracking-wider text-xs hover:underline">
+                                        <span><?php _e('Learn More', 'goodshep-theme'); ?></span>
+                                        <?php echo goodshep_icon(array('icon' => 'navigate-right', 'group' => 'utility', 'class' => 'w-3 h-3 ml-2 fill-current')); ?>
+                                    </a>
+                                </div>
                             </div>
-                        <?php endif; ?>
-
-                        <div class="mt-auto">
-                            <a href="<?php echo esc_url($p_link); ?>" 
-                               class="inline-flex items-center text-red font-bold uppercase tracking-wider text-xs hover:underline">
-                                <span><?php _e('Learn More', 'goodshep-theme'); ?></span>
-                                <?php echo goodshep_icon(array('icon' => 'navigate-right', 'group' => 'utility', 'class' => 'w-3 h-3 ml-2 fill-current')); ?>
-                            </a>
                         </div>
                     </div>
-                </div>
-            <?php 
-                    endforeach; 
-                endif;
-            endforeach; 
-            ?>
+                <?php 
+                endforeach; 
+                ?>
+            </div>
+            
+            <div class="swiper-pagination !bottom-0"></div>
+            <div class="swiper-button-prev text-purple"></div>
+            <div class="swiper-button-next text-purple"></div>
         </div>
 
     </div>
