@@ -81,8 +81,8 @@ if ($page_navigation) {
 <?php
 // Breadcrumbs & Language Switcher
 if ($header_breadcrumbs || $language_switcher): ?>
-  <div class="bg-white border-b border-gray-100">
-    <div class="container mx-auto px-4 py-4">
+  <div class="bg-white">
+    <div class="container mx-auto px-4 py-4 lg:py-8">
       <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
 
         <?php if ($header_breadcrumbs): ?>

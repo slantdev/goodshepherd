@@ -204,7 +204,7 @@ function goodshep_breadcrumbs()
   $home = '<a href="' . home_url() . '" class="no-underline text-body inline-block hover:text-red transition-colors">' . __('Home', 'goodshep-theme') . '</a>';
   $separator = '<span class="inline-block mx-2 text-gray-400">/</span>';
   $parent = '';
-  $current_page = '<span class="inline-block font-medium text-off-black">' . get_the_title() . '</span>';
+  $current_page = '<span class="inline-block font-medium text-body">' . get_the_title() . '</span>';
 
   if (is_tax(['service_category', 'service_tag'])) {
     $term = get_queried_object();
@@ -225,7 +225,7 @@ function goodshep_breadcrumbs()
     $parent = '<span class="inline-block">' . __('Media Releases', 'goodshep-theme') . '</span>';
   }
 
-  $output = '<nav aria-label="Breadcrumb" class="breadcrumbs text-sm mb-4 lg:mb-0">';
+  $output = '<nav aria-label="Breadcrumb" class="breadcrumbs text-lg">';
   $output .= $home;
   $output .= $separator;
 
@@ -266,7 +266,7 @@ function goodshep_page_anchor_nav($post_id = null)
 
     if (!empty($anchors)) {
 ?>
-      <div class="page-anchor-nav relative z-40 -translate-y-1/2">
+      <div class="page-anchor-nav relative z-40 -mt-[28px] xl:-mt-[44px]">
         <div class="container mx-auto px-4">
           <div class="max-w-screen-md mx-auto">
             <!-- Custom Select Container -->
