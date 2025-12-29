@@ -266,43 +266,45 @@ function goodshep_page_anchor_nav($post_id = null)
 
     if (!empty($anchors)) {
 ?>
-      <div class="page-anchor-nav py-4 bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+      <div class="page-anchor-nav relative z-40 -translate-y-1/2">
         <div class="container mx-auto px-4">
-          <div class="max-w-md">
+          <div class="max-w-screen-md mx-auto">
             <!-- Custom Select Container -->
             <div class="relative js-anchor-select group">
 
               <!-- Trigger -->
               <button type="button"
-                class="js-anchor-select-trigger w-full bg-purple text-white rounded-t-md px-4 py-3 flex items-center justify-between transition-colors focus:outline-none relative h-14"
+                class="js-anchor-select-trigger w-full bg-purple text-white rounded-md px-4 xl:px-8 py-3 flex items-center justify-between transition-colors focus:outline-none relative h-14 xl:h-[88px]"
                 aria-haspopup="listbox"
                 aria-expanded="false">
                 <span class="flex flex-col items-start text-left w-full relative h-full justify-center">
                   <!-- Floating Label -->
-                  <span class="js-anchor-label absolute left-0 text-base font-medium transition-all duration-200 origin-top-left pointer-events-none">
+                  <span class="js-anchor-label absolute left-0 text-xl font-medium transition-all duration-200 origin-top-left pointer-events-none ease-in-out">
                     <?php _e('On this page', 'goodshep-theme'); ?>
                   </span>
                   <!-- Selected Text -->
-                  <span class="js-anchor-selected-text text-sm font-medium mt-4 block opacity-0 transition-opacity duration-200 truncate w-full pr-8 text-white"></span>
+                  <span class="js-anchor-selected-text text-lg font-medium mt-4 block opacity-0 transition-opacity duration-200 truncate w-full pr-8 text-white"></span>
                 </span>
-                
+
                 <div class="flex items-center gap-2">
-                    <!-- Clear Button -->
-                    <span class="js-anchor-clear hidden p-1 hover:bg-white/20 rounded-full cursor-pointer transition-colors z-10" role="button" aria-label="Clear selection">
-                        <?php echo goodshep_icon(array('icon' => 'close', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white')); ?>
-                    </span>
-                    <!-- Caret -->
-                    <?php echo goodshep_icon(array('icon' => 'navigate-down', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white transition-transform duration-200 flex-shrink-0')); ?>
+                  <!-- Clear Button -->
+                  <span class="js-anchor-clear hidden p-2 hover:bg-white/20 rounded-full cursor-pointer transition-colors z-10" role="button" aria-label="Clear selection">
+                    <?php echo goodshep_icon(array('icon' => 'close', 'group' => 'utility', 'class' => 'w-3 h-3 fill-current text-white')); ?>
+                  </span>
+                  <!-- Caret -->
+                  <svg class="w-2.5 h-2.5 fill-current text-white transition-transform duration-200 shrink-0" viewBox="7 10 10 5" focusable="false">
+                    <polygon stroke="none" fill-rule="evenodd" points="7 10 12 15 17 10"></polygon>
+                  </svg>
                 </div>
               </button>
 
               <!-- Dropdown Menu -->
-              <ul class="js-anchor-select-dropdown absolute top-full left-0 w-full bg-white shadow-xl max-h-60 overflow-y-auto rounded-b-md z-50 hidden opacity-0 transition-opacity duration-200 border border-gray-100"
+              <ul class="js-anchor-select-dropdown absolute top-full left-0 w-full bg-white shadow-xl max-h-60 overflow-y-auto rounded-b-md z-50 hidden opacity-0 transition-opacity duration-200 border border-gray-100 py-2"
                 role="listbox">
                 <?php foreach ($anchors as $index => $anchor): ?>
-                  <li class="border-b border-gray-50 last:border-0">
+                  <li class="border-none">
                     <a href="#<?php echo esc_attr($anchor['id']); ?>"
-                      class="js-anchor-item block px-4 py-3 text-base text-gray-700 hover:bg-gray-50 hover:text-purple transition-colors no-underline"
+                      class="js-anchor-item block px-4 xl:px-8 py-4 text-lg text-body hover:bg-gray-100 transition-colors no-underline"
                       data-value="<?php echo esc_attr($anchor['id']); ?>">
                       <?php echo esc_html($anchor['title']); ?>
                     </a>
