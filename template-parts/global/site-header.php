@@ -18,7 +18,7 @@
 							<img class="w-auto h-6" src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/flags/TorresStraitIslanderFlag.png'); ?>" width="83" height="50" alt="Torress Strait Island">
 							<img class="w-auto h-6" src="<?php echo esc_url(get_stylesheet_directory_uri() . '/assets/images/flags/ProgressPrideFlag.png'); ?>" width="83" height="50" alt="Prograss Pride">
 						</div>
-						<div class="hidden text-base md:block md:ml-6 xl:ml-8 xl:text-xl">In an emergency dial <a href="tel:000" class="underline text-body">000</a></div>
+						<div class="hidden text-base md:block md:ml-6 xl:ml-8 xl:text-lg">In an emergency dial <a href="tel:000" class="underline text-body">000</a></div>
 					</div>
 					<div class="w-full flex flex-nowrap items-center justify-center px-0 py-3 gap-2 xl:py-1 xl:text-right xl:justify-end">
 						<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="inline-block text-purple bg-white border border-purple leading-none rounded-md text-sm font-medium no-underline hover:underline w-1/3 md:w-auto px-2 py-2 md:px-6 xl:py-3 xl:px-8 xl:text-xl text-center">
@@ -83,18 +83,20 @@
 	</div>
 
 	<!-- Global Search Form (Hidden by default) -->
-	<div id="header-search-form" class="hidden absolute left-0 right-0 top-full bg-white shadow-lg p-4 z-[60] border-t border-gray-100">
-		<div class="container mx-auto px-4">
-			<?php get_search_form(); ?>
+	<div id="header-search-form" class="hidden absolute left-0 right-0 top-full bg-off-white shadow-lg p-4 z-60 border-t border-gray-100 lg:border-t-0 lg:bg-transparent lg:shadow-none lg:p-0 2xl:hidden">
+		<div class="container mx-auto px-4 lg:flex lg:justify-end">
+			<div class="lg:bg-white lg:border-t lg:border-gray-100 lg:p-4 lg:shadow-lg lg:rounded-b-lg lg:w-72 xl:bg-off-white ">
+				<?php get_search_form(); ?>
+			</div>
 		</div>
 	</div>
 
 	<!-- Mobile Menu Overlay -->
-	<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-[65] hidden transition-opacity opacity-0"></div>
+	<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 z-65 hidden transition-opacity opacity-0"></div>
 
 	<!-- Mobile Menu Drawer -->
-	<div id="mobile-menu-drawer" class="fixed inset-y-0 right-0 z-[70] w-full max-w-sm bg-white shadow-xl transform translate-x-full transition-transform duration-300 overflow-y-auto">
-		
+	<div id="mobile-menu-drawer" class="fixed inset-y-0 right-0 z-70 w-full max-w-sm bg-white shadow-xl transform translate-x-full transition-transform duration-300 overflow-y-auto">
+
 		<!-- Drawer Header -->
 		<div class="flex items-center justify-between p-4 border-b border-gray-100 sticky top-0 bg-white z-10">
 			<span class="text-xl font-bold text-off-black"><?php esc_html_e('Menu', 'goodshep-theme'); ?></span>
@@ -120,7 +122,7 @@
 					?>
 						<li class="border-b border-gray-50 last:border-0 pb-2">
 							<div class="flex items-center justify-between">
-								<a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>" class="text-lg font-medium text-off-black py-2 block flex-grow">
+								<a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>" class="text-lg font-medium text-off-black py-2 block grow">
 									<?php echo esc_html($title); ?>
 								</a>
 								<?php if ($has_submenu): ?>
@@ -132,8 +134,8 @@
 
 							<?php if ($has_submenu): ?>
 								<ul class="hidden pl-4 space-y-3 mt-2 mb-4 border-l-2 border-gray-100">
-									
-									<?php if ($submenu_type === 'megamenu'): 
+
+									<?php if ($submenu_type === 'megamenu'):
 										$megamenu_items = get_sub_field('megamenu_items');
 										$megamenu_submenu_type = $megamenu_items['submenu_type'] ?? '';
 										$megamenu_repeater = $megamenu_items['submenu_group'] ?? [];
@@ -144,15 +146,15 @@
 											foreach ($megamenu_repeater as $col):
 												$col_heading = $col['submenu_heading'] ?? '';
 												$col_items = $col['submenu_items'] ?? [];
-												?>
+									?>
 												<li class="pt-2">
 													<?php if ($col_heading): ?>
 														<div class="font-semibold text-gray-500 text-sm uppercase tracking-wide mb-2"><?php echo esc_html($col_heading); ?></div>
 													<?php endif; ?>
-													
+
 													<?php if (!empty($col_items)): ?>
 														<ul class="space-y-2">
-															<?php foreach ($col_items as $item): 
+															<?php foreach ($col_items as $item):
 																$s_link = $item['submenu_link'] ?? [];
 															?>
 																<li>
@@ -172,15 +174,15 @@
 											foreach ($image_grid as $col):
 												$col_heading = $col['submenu_heading'] ?? '';
 												$col_items = $col['submenu_items'] ?? [];
-												?>
+											?>
 												<li class="pt-2">
 													<?php if ($col_heading): ?>
 														<div class="font-semibold text-gray-500 text-sm uppercase tracking-wide mb-2"><?php echo esc_html($col_heading); ?></div>
 													<?php endif; ?>
-													
+
 													<?php if (!empty($col_items)): ?>
 														<ul class="space-y-3">
-															<?php foreach ($col_items as $item): 
+															<?php foreach ($col_items as $item):
 																$s_link = $item['submenu_link'] ?? [];
 															?>
 																<li>
@@ -192,21 +194,24 @@
 														</ul>
 													<?php endif; ?>
 												</li>
-											<?php endforeach;
+									<?php endforeach;
 										endif;
-									endif; // End Megamenu ?>
+									endif; // End Megamenu 
+									?>
 
-									<?php if ($submenu_type === 'dropdown'): 
+									<?php if ($submenu_type === 'dropdown'):
 										$dropdown_items = get_sub_field('dropdown_menu_items')['submenu_items'] ?? [];
 										foreach ($dropdown_items as $item):
 											$s_link = $item['submenu_link'] ?? [];
 									?>
-										<li>
-											<a href="<?php echo esc_url($s_link['url'] ?? '#'); ?>" target="<?php echo esc_attr($s_link['target'] ?? '_self'); ?>" class="block text-base text-gray-700 hover:text-red">
-												<?php echo esc_html($s_link['title'] ?? ''); ?>
-											</a>
-										</li>
-									<?php endforeach; endif; // End Dropdown ?>
+											<li>
+												<a href="<?php echo esc_url($s_link['url'] ?? '#'); ?>" target="<?php echo esc_attr($s_link['target'] ?? '_self'); ?>" class="block text-base text-gray-700 hover:text-red">
+													<?php echo esc_html($s_link['title'] ?? ''); ?>
+												</a>
+											</li>
+									<?php endforeach;
+									endif; // End Dropdown 
+									?>
 
 								</ul>
 							<?php endif; ?>
@@ -214,7 +219,7 @@
 					<?php endwhile; ?>
 				</ul>
 			<?php endif; ?>
-			
+
 			<!-- Mobile CTA Buttons (Optional: Added here for ease of access) -->
 			<div class="mt-8 pt-6 border-t border-gray-200 flex flex-col gap-4">
 				<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="block w-full text-purple bg-white border border-solid border-purple rounded-md text-center py-3 font-medium hover:bg-purple hover:text-white transition-colors">
