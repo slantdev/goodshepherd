@@ -21,6 +21,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'goodshep-theme' ); ?></a>
 
+	<?php get_template_part( 'template-parts/global/hello-bar' ); ?>
 	<?php get_template_part( 'template-parts/global/site-header' ); ?>
 
     <div id="content" class="site-content">
