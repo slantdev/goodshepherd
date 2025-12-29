@@ -1,0 +1,23 @@
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --color-red: #d72c32;
+  --color-off-black: #231f20;
+  --color-default: #333333;
+  --color-grey: #666666;
+  --color-light-grey: #e3e3e3;
+  --color-off-white: #f7f7f7;
+  --color-light-purple: #fdf7fc;
+  --color-body: #333333;
+  --color-purple: #b86aab;
+  --color-dark-purple: #a55098;
+  --color-cyan: #00c1de;
+  --color-pink: #e980a8;
+  --color-blue: #458bca;
+  --color-yellow: #f5bd17;
+  --color-orange: #f78d2b;
+}
+
+@utility prose {
+  --tw-prose-links: var(--color-red);
+}

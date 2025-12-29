@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.18] - 2025-12-26
+
+### Added
+- **Templates:** Ported `Timeline` page template from reference.
+    - Integrated ScrollMagic, Swiper, and Fancybox for timeline interactions.
+    - Ported styles to `src/css/page-timeline.css` using Tailwind v4 syntax.
+- **Architecture:** Refactored CSS structure for better Tailwind v4 compatibility.
+    - Created `src/css/theme.css` to centralize `@theme` definitions.
+    - Updated CSS imports to share theme context via `@reference` and `@import`.
+
 ## [2.2.17] - 2025-12-26
 
 ### Changed

@@ -7,11 +7,13 @@ import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Import Swiper
-import Swiper from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import Swiper from 'swiper';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+import { initTimeline } from './js/page-timeline.js';
 
 // Initialize Fancybox
 Fancybox.bind("[data-fancybox]", {
@@ -19,9 +21,12 @@ Fancybox.bind("[data-fancybox]", {
 });
 
 // Initialize Swiper
-document.addEventListener("DOMContentLoaded", () => {
-  // Swiper
-  const swipers = document.querySelectorAll(".swiper");
+document.addEventListener('DOMContentLoaded', () => {
+    // Timeline
+    initTimeline();
+
+    // Swiper
+    const swipers = document.querySelectorAll('.swiper');
   swipers.forEach((el) => {
     new Swiper(el, {
       modules: [Navigation, Pagination],

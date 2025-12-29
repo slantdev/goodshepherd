@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@reference "./theme.css";
+
+:root {
+  --scroll: 0;
+}
+
+#timeline-nav {
+  .swiper-slide {
+    @apply w-auto;
+    &:first-child {
+      .nav-link {
+        span {
+          @apply border-l border-solid border-[#8D397E];
+        }
+      }
+    }
+  }
+}
+.timeline-nav--button-prev,
+.timeline-nav--button-next {
+  @apply absolute top-[22px] w-6 h-6 lg:top-8 lg:w-9 lg:h-9 flex items-center justify-center bg-white/80 hover:bg-white rounded-full text-gray-500 transition-all duration-200;
+  &.swiper-button-lock {
+    @apply hidden;
+  }
+  &.swiper-button-disabled {
+    @apply hidden;
+  }
+}
+.timeline-nav--button-prev {
+  @apply -left-[30px] lg:-left-14;
+}
+.timeline-nav--button-next {
+  @apply -right-[30px] lg:-right-14;
+}
+
+.timeline-entries {
+  .timeline-section {
+    .timeline-border-center {
+      /* Ensure this exists as it was referenced in PHP but not explicitly style block in my previous cat output maybe? 
+         Wait, looking at PHP: class="timeline-border-center absolute ..."
+         It has utility classes. The SCSS had specific overrides?
+         Looking at cat output again:
+         .timeline-section {
+            .timeline-border-top { ... }
+            &:first-child { .timeline-border-center { @apply top-0; } }
+            &:last-child { .timeline-border-center { @apply bottom-0; } ... }
+            .timeline-content { ... }
+         }
+      */
+    }
+    .timeline-border-top {
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='#86774F' stroke-width='3' stroke-dasharray='3%2c 9' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+      background-repeat: repeat;
+      @apply h-[10px];
+    }
+    &:first-child {
+      .timeline-border-center {
+        @apply top-0;
+      }
+    }
+    &:last-child {
+      .timeline-border-center {
+        @apply bottom-0;
+      }
+      .timeline-love-separator {
+        @apply hidden;
+      }
+    }
+    .timeline-content {
+      &:after {
+        @apply block w-full h-[3px] translate-y-0.5 absolute left-0 right-0 bottom-0;
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg width='40' height='3' viewBox='0 0 40 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.5 3H2.5C2.89782 3 3.27936 2.84196 3.56066 2.56066C3.84196 2.27936 4 1.89782 4 1.5C4 1.10218 3.84196 0.720644 3.56066 0.43934C3.27936 0.158035 2.89782 0 2.5 0H1.5C1.10218 0 0.720644 0.158035 0.43934 0.43934C0.158035 0.720644 0 1.10218 0 1.5C0 1.89782 0.158035 2.27936 0.43934 2.56066C0.720644 2.84196 1.10218 3 1.5 3Z' fill='%2385774F'/%3E%3Cpath d='M21.5 3H22.5C22.8978 3 23.2794 2.84196 23.5607 2.56066C23.842 2.27936 24 1.89782 24 1.5C24 1.10218 23.842 0.720644 23.5607 0.43934C23.2794 0.158035 22.8978 0 22.5 0H21.5C21.1022 0 20.7206 0.158035 20.4393 0.43934C20.158 0.720644 20 1.10218 20 1.5C20 1.89782 20.158 2.27936 20.4393 2.56066C20.7206 2.84196 21.1022 3 21.5 3Z' fill='%2385774F'/%3E%3C/svg%3E%0A");
+        background-position: left bottom;
+        background-repeat: repeat;
+      }
+    }
+    &:last-child {
+      .timeline-content {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.period-entry {
+  @apply py-8 lg:py-16;
+}
+
+.period-entry,
+.timeline-entry,
+.gs-heart {
+  @apply translate-y-24 transition-all duration-[1.2s] opacity-0 ease-in-out;
+  &.animated {
+    @apply translate-y-0 opacity-100;
+  }
+}
+
+#entriesBackground {
+  .section-background {
+    @apply h-screen w-full opacity-0 transition-all duration-1500 absolute inset-0;
+    &:first-child {
+      @apply opacity-100;
+    }
+    &.active {
+      @apply opacity-100;
+    }
+  }
+}
+
+.pulse-red {
+  animation: pulse-red 2s infinite;
+}
+.pulse-black {
+  animation: pulse-black 2s infinite;
+}
+@keyframes pulse-red {
+  0% {
+    box-shadow: 0 0 0 0px rgba(255, 65, 60, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(255, 65, 60, 0);
+  }
+}
+@keyframes pulse-black {
+  0% {
+    box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+  }
+}
