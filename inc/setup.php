@@ -52,3 +52,9 @@ if (! function_exists('goodshep_setup')) :
 	}
 endif;
 add_action('after_setup_theme', 'goodshep_setup');
+
+/**
+ * Enable shortcodes in widgets
+ */
+add_filter('widget_text', 'shortcode_unautop');
+add_filter('widget_text', 'do_shortcode');

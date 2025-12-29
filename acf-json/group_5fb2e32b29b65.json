@@ -2217,20 +2217,6 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "all"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
                 "value": "publications"
             }
         ],
@@ -2265,10 +2251,13 @@
     ],
     "menu_order": 0,
     "position": "acf_after_title",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": "",
+    "hide_on_screen": [
+        "block_editor",
+        "the_content"
+    ],
     "active": true,
     "description": "",
     "show_in_rest": 0,
@@ -2280,7 +2269,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1765015573,
+    "modified": 1767018289,
     "acfe_categories": {
         "page-builder": "Page Builder"
     }
