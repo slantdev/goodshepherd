@@ -12,7 +12,8 @@ $filter_group = get_sub_field('filters');
 $enable_filter = $filter_group['enable_filter'] ?? false;
 $filters = $filter_group['filters'] ?? [];
 
-$info_boxes_groups = get_sub_field('info_boxes') ?? [];
+// Updated repeater name to 'featured_content'
+$featured_content_groups = get_sub_field('featured_content') ?? [];
 
 // Wrapper Attributes
 $section_id    = goodshep_get_section_id();
@@ -63,49 +64,60 @@ $bg_style      = goodshep_get_bg_image_style();
         <!-- Items Grid -->
         <div class="featured-filter-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <?php 
-            foreach ($info_boxes_groups as $group) : 
+            foreach ($featured_content_groups as $group) : 
                 $filter_slug = $group['assigned_filter_slug'] ?? '';
-                $boxes = $group['info_box'] ?? [];
+                $posts = $group['content_cards'] ?? []; // Relationship field
                 
-                foreach ($boxes as $box) :
-                    $icon = $box['icon'] ?? '';
-                    $icon_color = $box['icon_color'] ?? '#002F56';
-                    $title = $box['title'] ?? '';
-                    $desc = $box['description'] ?? '';
-                    $link = $box['button_link'] ?? null;
+                if ($posts) :
+                    foreach ($posts as $post_obj) :
+                        $p_id = $post_obj->ID;
+                        $p_title = get_the_title($p_id);
+                        $p_link = get_permalink($p_id);
+                        $p_excerpt = get_the_excerpt($p_id);
+                        $p_thumb = get_the_post_thumbnail_url($p_id, 'large');
             ?>
-                <div class="js-featured-filter-item flex flex-col h-full bg-white rounded-xl shadow-lg p-8 border border-gray-100 transition-all duration-300" 
+                <div class="js-featured-filter-item flex flex-col h-full bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 group" 
                      data-category="<?php echo esc_attr($filter_slug); ?>">
                     
-                    <?php if ($icon) : ?>
-                        <div class="mb-6 w-12 h-12 flex items-center justify-center rounded-lg" style="background-color: <?php echo esc_attr($icon_color); ?>20;">
-                            <?php echo goodshep_icon(array('icon' => $icon, 'group' => 'custom', 'class' => 'w-8 h-8 fill-current', 'style' => "color: {$icon_color};")); ?>
-                        </div>
-                    <?php endif; ?>
+                    <!-- Image -->
+                    <div class="relative h-56 overflow-hidden">
+                        <?php if ($p_thumb) : ?>
+                            <img src="<?php echo esc_url($p_thumb); ?>" 
+                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                 alt="<?php echo esc_attr($p_title); ?>">
+                        <?php else : ?>
+                            <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">
+                                <?php echo goodshep_icon(['icon' => 'search', 'class' => 'w-12 h-12']); // Fallback icon ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
-                    <?php if ($title) : ?>
-                        <h3 class="text-xl font-bold mb-4 text-gray-900"><?php echo esc_html($title); ?></h3>
-                    <?php endif; ?>
+                    <!-- Content -->
+                    <div class="p-8 flex flex-col grow">
+                        <h3 class="text-xl font-bold mb-4 text-gray-900 group-hover:text-purple transition-colors">
+                            <a href="<?php echo esc_url($p_link); ?>" class="no-underline">
+                                <?php echo esc_html($p_title); ?>
+                            </a>
+                        </h3>
 
-                    <?php if ($desc) : ?>
-                        <div class="text-base leading-relaxed text-gray-600 mb-6 grow">
-                            <?php echo wp_kses_post($desc); ?>
-                        </div>
-                    <?php endif; ?>
+                        <?php if ($p_excerpt) : ?>
+                            <div class="text-base leading-relaxed text-gray-600 mb-6 grow line-clamp-3">
+                                <?php echo wp_kses_post($p_excerpt); ?>
+                            </div>
+                        <?php endif; ?>
 
-                    <?php if ($link) : ?>
                         <div class="mt-auto">
-                            <a href="<?php echo esc_url($link['url']); ?>" 
-                               target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                               class="inline-flex items-center text-red font-semibold uppercase tracking-wider text-sm hover:underline">
-                                <span><?php echo esc_html($link['title']); ?></span>
+                            <a href="<?php echo esc_url($p_link); ?>" 
+                               class="inline-flex items-center text-red font-bold uppercase tracking-wider text-xs hover:underline">
+                                <span><?php _e('Learn More', 'goodshep-theme'); ?></span>
                                 <?php echo goodshep_icon(array('icon' => 'navigate-right', 'group' => 'utility', 'class' => 'w-3 h-3 ml-2 fill-current')); ?>
                             </a>
                         </div>
-                    <?php endif; ?>
+                    </div>
                 </div>
             <?php 
-                endforeach; 
+                    endforeach; 
+                endif;
             endforeach; 
             ?>
         </div>

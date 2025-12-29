@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.21] - 2025-12-26
+
+### Changed
+- **Components:** Updated `featured_with_filter` to pull content from Post Objects (Relationship field).
+    - Refactored grid to display Featured Image, Title, Excerpt, and Learn More links.
+    - Updated ACF field mapping to match the latest JSON configuration.
+
 ## [2.2.20] - 2025-12-26
 
 ### Added
