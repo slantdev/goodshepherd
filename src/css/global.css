@@ -42,6 +42,13 @@
   }
 }
 
+/* Footer */
+.footer-menu {
+  a {
+    @apply text-body no-underline hover:underline;
+  }
+}
+
 /* Helper Utilities */
 .category-icon {
   filter: brightness(0) invert(1);

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.13] - 2025-12-26
+
+### Changed
+- **Footer:** Refactored `template-parts/global/site-footer.php` to match the design reference.
+    - Implemented 2-column layout with ACF-driven content (Flags, Address, Menus).
+    - Updated styling to use Tailwind classes (`bg-light-purple`, `text-off-black`).
+    - Added conditional Quick Exit button logic.
+    - Fixed address field rendering to support HTML line breaks.
+
 ## [2.2.12] - 2025-12-26
 
 ### Added

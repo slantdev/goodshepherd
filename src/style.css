@@ -19,4 +19,9 @@
   --color-blue: #458bca;
   --color-yellow: #f5bd17;
   --color-orange: #f78d2b;
+  
+}
+
+@utility prose {
+  --tw-prose-links: var(--color-red);
 }
