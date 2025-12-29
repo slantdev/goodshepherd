@@ -283,9 +283,17 @@ function goodshep_page_anchor_nav($post_id = null)
                     <?php _e('On this page', 'goodshep-theme'); ?>
                   </span>
                   <!-- Selected Text -->
-                  <span class="js-anchor-selected-text text-sm font-medium mt-4 block opacity-0 transition-opacity duration-200 truncate w-full pr-4 text-white"></span>
+                  <span class="js-anchor-selected-text text-sm font-medium mt-4 block opacity-0 transition-opacity duration-200 truncate w-full pr-8 text-white"></span>
                 </span>
-                <?php echo goodshep_icon(array('icon' => 'navigate-down', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white transition-transform duration-200 flex-shrink-0')); ?>
+                
+                <div class="flex items-center gap-2">
+                    <!-- Clear Button -->
+                    <span class="js-anchor-clear hidden p-1 hover:bg-white/20 rounded-full cursor-pointer transition-colors z-10" role="button" aria-label="Clear selection">
+                        <?php echo goodshep_icon(array('icon' => 'close', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white')); ?>
+                    </span>
+                    <!-- Caret -->
+                    <?php echo goodshep_icon(array('icon' => 'navigate-down', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white transition-transform duration-200 flex-shrink-0')); ?>
+                </div>
               </button>
 
               <!-- Dropdown Menu -->

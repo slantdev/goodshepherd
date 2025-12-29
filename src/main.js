@@ -176,26 +176,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Page Anchor Dropdown Logic (Floating Label Style)
+    // Page Anchor Dropdown Logic (Floating Label Style with Clear)
     const anchorSelects = document.querySelectorAll('.js-anchor-select');
     anchorSelects.forEach(select => {
         const trigger = select.querySelector('.js-anchor-select-trigger');
         const dropdown = select.querySelector('.js-anchor-select-dropdown');
         const label = select.querySelector('.js-anchor-label');
         const selectedText = select.querySelector('.js-anchor-selected-text');
-        const icon = trigger.querySelector('svg');
+        const clearBtn = select.querySelector('.js-anchor-clear');
+        const icon = trigger.querySelector('.svg-icon'); // Target the caret icon specifically if possible, or assume last svg
+        // Since clear btn also has an icon, trigger.querySelector('svg') might target the clear btn icon if it appears first in DOM order or CSS selector
+        // The structure is Trigger > Span > Text... AND Trigger > Div > ClearBtn > SVG AND Caret > SVG
+        // Caret is the last child of the flex container or in the Div.
+        // Let's rely on specific class or position. In template-tags, caret is last.
+        // Better: trigger.querySelectorAll('svg')[1] or similar if not classed.
+        // Actually, the caret has class 'transition-transform'. I'll target that.
+        const caretIcon = trigger.querySelector('.transition-transform'); 
+        
         const items = select.querySelectorAll('.js-anchor-item');
         let hasSelection = false;
 
         const updateLabelState = (isOpen) => {
             if (isOpen || hasSelection) {
-                // Float Label (Top Left, Small)
+                // Float Label
                 label.classList.remove('top-1/2', '-translate-y-1/2', 'scale-100');
                 label.classList.add('top-2', 'scale-75', 'translate-y-0');
             } else {
-                // Center Label (Default)
+                // Center Label
                 label.classList.add('top-1/2', '-translate-y-1/2', 'scale-100');
                 label.classList.remove('top-2', 'scale-75', 'translate-y-0');
+            }
+
+            // Toggle Clear Button
+            if (hasSelection) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
             }
         };
 
@@ -207,19 +223,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 dropdown.classList.remove('hidden');
                 setTimeout(() => dropdown.classList.remove('opacity-0'), 10);
                 trigger.setAttribute('aria-expanded', 'true');
-                icon.classList.add('rotate-180');
+                if(caretIcon) caretIcon.classList.add('rotate-180');
                 updateLabelState(true);
             } else {
                 // Close
                 dropdown.classList.add('opacity-0');
                 setTimeout(() => dropdown.classList.add('hidden'), 200);
                 trigger.setAttribute('aria-expanded', 'false');
-                icon.classList.remove('rotate-180');
+                if(caretIcon) caretIcon.classList.remove('rotate-180');
                 updateLabelState(false);
             }
         };
 
         trigger.addEventListener('click', (e) => {
+            // Prevent toggle if clicking the clear button
+            if (e.target.closest('.js-anchor-clear')) return;
+            
             e.preventDefault();
             toggleDropdown();
         });
@@ -234,6 +253,21 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        if (clearBtn) {
+            clearBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // Stop bubbling to trigger
+                
+                // Reset State
+                selectedText.textContent = '';
+                selectedText.classList.add('opacity-0');
+                hasSelection = false;
+                
+                // Close dropdown if open, or just reset label
+                toggleDropdown(false);
+            });
+        }
+
         // Close on click outside
         document.addEventListener('click', (e) => {
             if (!select.contains(e.target)) {
@@ -241,8 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Initial state check (in case browser preserved state, though unlikely on reload)
-        // Ensure label starts centered
+        // Initial state check
         label.classList.add('top-1/2', '-translate-y-1/2', 'scale-100');
     });
 });
