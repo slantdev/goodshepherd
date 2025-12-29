@@ -17,12 +17,15 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-            // 1. Render the Page Builder
+            // 1. Render Page Header (Hero)
+            goodshep_page_header();
+
+            // 2. Render the Page Builder
             goodshep_render_page_builder();
 
-            // 2. Fallback for default content editor
+            // 3. Fallback for default content editor
             // Only show if Page Builder is empty (optional logic, but good for safety)
-            if ( ! have_rows( 'page_builder' ) && get_the_content() ) {
+            if ( ! have_rows( 'content_management' ) && get_the_content() ) {
                 ?>
                 <div class="container mx-auto px-4 py-12 prose lg:prose-xl">
                     <h1><?php the_title(); ?></h1>

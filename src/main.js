@@ -175,6 +175,76 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Page Anchor Dropdown Logic (Floating Label Style)
+    const anchorSelects = document.querySelectorAll('.js-anchor-select');
+    anchorSelects.forEach(select => {
+        const trigger = select.querySelector('.js-anchor-select-trigger');
+        const dropdown = select.querySelector('.js-anchor-select-dropdown');
+        const label = select.querySelector('.js-anchor-label');
+        const selectedText = select.querySelector('.js-anchor-selected-text');
+        const icon = trigger.querySelector('svg');
+        const items = select.querySelectorAll('.js-anchor-item');
+        let hasSelection = false;
+
+        const updateLabelState = (isOpen) => {
+            if (isOpen || hasSelection) {
+                // Float Label (Top Left, Small)
+                label.classList.remove('top-1/2', '-translate-y-1/2', 'scale-100');
+                label.classList.add('top-2', 'scale-75', 'translate-y-0');
+            } else {
+                // Center Label (Default)
+                label.classList.add('top-1/2', '-translate-y-1/2', 'scale-100');
+                label.classList.remove('top-2', 'scale-75', 'translate-y-0');
+            }
+        };
+
+        const toggleDropdown = (open) => {
+            const isOpen = open !== undefined ? open : dropdown.classList.contains('hidden');
+            
+            if (isOpen) {
+                // Open
+                dropdown.classList.remove('hidden');
+                setTimeout(() => dropdown.classList.remove('opacity-0'), 10);
+                trigger.setAttribute('aria-expanded', 'true');
+                icon.classList.add('rotate-180');
+                updateLabelState(true);
+            } else {
+                // Close
+                dropdown.classList.add('opacity-0');
+                setTimeout(() => dropdown.classList.add('hidden'), 200);
+                trigger.setAttribute('aria-expanded', 'false');
+                icon.classList.remove('rotate-180');
+                updateLabelState(false);
+            }
+        };
+
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleDropdown();
+        });
+
+        items.forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Set text and state
+                selectedText.textContent = item.textContent.trim();
+                selectedText.classList.remove('opacity-0');
+                hasSelection = true;
+                toggleDropdown(false);
+            });
+        });
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            if (!select.contains(e.target)) {
+                toggleDropdown(false);
+            }
+        });
+        
+        // Initial state check (in case browser preserved state, though unlikely on reload)
+        // Ensure label starts centered
+        label.classList.add('top-1/2', '-translate-y-1/2', 'scale-100');
+    });
 });
 
 console.log('Main JS Loaded');

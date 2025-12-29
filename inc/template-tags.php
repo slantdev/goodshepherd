@@ -195,3 +195,126 @@ function preint_r($data)
   echo '</pre>';
   //}
 }
+
+/**
+ * Display Breadcrumbs
+ */
+function goodshep_breadcrumbs()
+{
+  $home = '<a href="' . home_url() . '" class="no-underline text-body inline-block hover:text-red transition-colors">' . __('Home', 'goodshep-theme') . '</a>';
+  $separator = '<span class="inline-block mx-2 text-gray-400">/</span>';
+  $parent = '';
+  $current_page = '<span class="inline-block font-medium text-off-black">' . get_the_title() . '</span>';
+
+  if (is_tax(['service_category', 'service_tag'])) {
+    $term = get_queried_object();
+    $term_name =  $term->name;
+    $parent = '<span class="inline-block">' . __('Our Services', 'goodshep-theme') . '</span>';
+    $current_page = '<span class="inline-block text-red">' . $term_name . '</span>';
+  } else if (is_singular('services')) {
+    $parent = '<span class="inline-block">' . __('Our Services', 'goodshep-theme') . '</span>';
+  } else if (is_singular('jobs')) {
+    $parent = '<span class="inline-block">' . __('Get Involved', 'goodshep-theme') . '</span>' . $separator . '<span class="inline-block"><a class="text-body no-underline hover:text-red transition-colors" href="/careers-with-us/">' . __('Careers with Us', 'goodshep-theme') . '</a></span>';
+  } else if (is_page_template('page-templates/media-coverage.php')) {
+    $parent = '<span class="inline-block">' . __('News and Events', 'goodshep-theme') . '</span>';
+  } else if (is_singular('publications')) {
+    $current_page = '<span class="inline-block">' . __('Our Research', 'goodshep-theme') . '</span>';
+  } else if (is_singular('events')) {
+    $parent = '<span class="inline-block">' . __('Events', 'goodshep-theme') . '</span>';
+  } else if (is_singular('media_coverage')) {
+    $parent = '<span class="inline-block">' . __('Media Releases', 'goodshep-theme') . '</span>';
+  }
+
+  $output = '<nav aria-label="Breadcrumb" class="breadcrumbs text-sm mb-4 lg:mb-0">';
+  $output .= $home;
+  $output .= $separator;
+
+  if ($parent) {
+    $output .= $parent;
+    $output .= $separator;
+  }
+
+  $output .= $current_page;
+  $output .= '</nav>';
+
+  echo $output;
+}
+
+/**
+ * Display Page Anchor Navigation (Jump Links) - Dropdown Style
+ */
+function goodshep_page_anchor_nav($post_id = null)
+{
+  if (!$post_id) {
+    $post_id = get_the_ID();
+  }
+
+  if (have_rows('content_management', $post_id)) {
+    $anchors = [];
+    while (have_rows('content_management', $post_id)) {
+      the_row();
+      if (get_sub_field('page_anchor')) {
+        $section_id = get_sub_field('section_id');
+        if ($section_id) {
+          $anchors[] = [
+            'id' => goodshep_slugify($section_id),
+            'title' => $section_id
+          ];
+        }
+      }
+    }
+
+    if (!empty($anchors)) {
+?>
+      <div class="page-anchor-nav py-4 bg-white border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+        <div class="container mx-auto px-4">
+          <div class="max-w-md">
+            <!-- Custom Select Container -->
+            <div class="relative js-anchor-select group">
+
+              <!-- Trigger -->
+              <button type="button"
+                class="js-anchor-select-trigger w-full bg-purple text-white rounded-t-md px-4 py-3 flex items-center justify-between transition-colors focus:outline-none relative h-14"
+                aria-haspopup="listbox"
+                aria-expanded="false">
+                <span class="flex flex-col items-start text-left w-full relative h-full justify-center">
+                  <!-- Floating Label -->
+                  <span class="js-anchor-label absolute left-0 text-base font-medium transition-all duration-200 origin-top-left pointer-events-none">
+                    <?php _e('On this page', 'goodshep-theme'); ?>
+                  </span>
+                  <!-- Selected Text -->
+                  <span class="js-anchor-selected-text text-sm font-medium mt-4 block opacity-0 transition-opacity duration-200 truncate w-full pr-4 text-white"></span>
+                </span>
+                <?php echo goodshep_icon(array('icon' => 'navigate-down', 'group' => 'utility', 'class' => 'w-4 h-4 fill-current text-white transition-transform duration-200 flex-shrink-0')); ?>
+              </button>
+
+              <!-- Dropdown Menu -->
+              <ul class="js-anchor-select-dropdown absolute top-full left-0 w-full bg-white shadow-xl max-h-60 overflow-y-auto rounded-b-md z-50 hidden opacity-0 transition-opacity duration-200 border border-gray-100"
+                role="listbox">
+                <?php foreach ($anchors as $index => $anchor): ?>
+                  <li class="border-b border-gray-50 last:border-0">
+                    <a href="#<?php echo esc_attr($anchor['id']); ?>"
+                      class="js-anchor-item block px-4 py-3 text-base text-gray-700 hover:bg-gray-50 hover:text-purple transition-colors no-underline"
+                      data-value="<?php echo esc_attr($anchor['id']); ?>">
+                      <?php echo esc_html($anchor['title']); ?>
+                    </a>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+<?php
+    }
+  }
+}
+
+/**
+ * Render Page Header
+ */
+function goodshep_page_header()
+{
+  get_template_part('template-parts/global/page-header');
+}
