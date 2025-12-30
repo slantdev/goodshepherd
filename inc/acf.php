@@ -137,6 +137,7 @@ $goodshep_acf_layouts = [
 	'two_card_block',
 	'two_line_cta',
 	'video_block',
+	'video_block_2',
 	'wide_text_and_image',
 ];
 
