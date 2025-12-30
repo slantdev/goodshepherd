@@ -57,7 +57,7 @@ $block_classes = goodshep_get_block_classes('relative p-0'); // Remove default p
 
                 <!-- Buttons -->
                 <?php if ($buttons) : ?>
-                  <div class="flex flex-wrap justify-center gap-4 xl:gap-6">
+                  <div class="flex flex-wrap gap-4 xl:gap-6">
                     <?php foreach ($buttons as $btn_row) :
                       $btn_group = $btn_row['button'] ?? [];
                       $link      = $btn_group['button_link'] ?? [];
