@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.23] - 2025-12-26
+
+### Added
+- **Components:**
+    - **Hero Slider:** Created a full-width hero slider component using Swiper.js with fade effect and autoplay.
+    - **Stats Slider:** Created a statistics slider component with responsive grid layout (1/3/5 items) and dynamic styling.
+
 ## [2.2.22] - 2025-12-26
 
 ### Changed

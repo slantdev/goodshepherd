@@ -8,10 +8,11 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Import Swiper
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 import { initTimeline } from './js/page-timeline.js';
 import { initServiceLocator } from './js/page-service-locator.js';
@@ -29,22 +30,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Service Locator
     initServiceLocator();
 
-    // Swiper
-    const swipers = document.querySelectorAll('.swiper');
-  swipers.forEach((el) => {
-    new Swiper(el, {
-      modules: [Navigation, Pagination],
-      loop: true,
-      pagination: {
-        el: el.querySelector(".swiper-pagination"),
-        clickable: true,
-      },
-      navigation: {
-        nextEl: el.querySelector(".swiper-button-next"),
-        prevEl: el.querySelector(".swiper-button-prev"),
-      },
+    // Hero Slider
+    const heroSliders = document.querySelectorAll('.hero-slider');
+    heroSliders.forEach(el => {
+        new Swiper(el, {
+            modules: [Navigation, Pagination, Autoplay, EffectFade],
+            loop: true,
+            effect: 'fade',
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: el.querySelector('.swiper-pagination'),
+                clickable: true,
+            },
+            navigation: {
+                nextEl: el.querySelector('.swiper-button-next'),
+                prevEl: el.querySelector('.swiper-button-prev'),
+            },
+        });
     });
-  });
+
+    // Generic Swiper (exclude specific ones)
+    const swipers = document.querySelectorAll('.swiper:not(.hero-slider):not(.featured-filter-slider):not(.stats-slider)');
+    swipers.forEach((el) => {
+        new Swiper(el, {
+            modules: [Navigation, Pagination],
+            loop: true,
+            pagination: {
+                el: el.querySelector(".swiper-pagination"),
+                clickable: true,
+            },
+            navigation: {
+                nextEl: el.querySelector(".swiper-button-next"),
+                prevEl: el.querySelector(".swiper-button-prev"),
+            },
+        });
+    });
+
+    // Stats Slider
+    const statsSliders = document.querySelectorAll('.stats-slider');
+    statsSliders.forEach((el) => {
+        new Swiper(el, {
+            modules: [Pagination, Autoplay],
+            loop: true,
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: el.querySelector(".swiper-pagination"),
+                clickable: true,
+            },
+            breakpoints: {
+                0: { slidesPerView: 1, spaceBetween: 20 },
+                768: { slidesPerView: 3, spaceBetween: 0 }, // Border handling implies 0 space visually? Or keep space but use borders?
+                // If using borders between slides, spaceBetween 0 works best so borders touch.
+                1280: { slidesPerView: 5, spaceBetween: 0 },
+            },
+        });
+    });
 
   // Search Toggle Logic
   const searchToggles = document.querySelectorAll(".js-search-toggle");
