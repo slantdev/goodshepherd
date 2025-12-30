@@ -44,7 +44,7 @@ $block_classes = goodshep_get_block_classes('relative p-0'); // Remove default p
               <div class="max-w-4xl" style="<?php echo esc_attr($text_style); ?>">
 
                 <?php if ($heading) : ?>
-                  <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-inherit">
+                  <h2 class="text-4xl md:text-5xl xl:text-[56px] font-bold mb-6 xl:mb-10 leading-tight text-inherit">
                     <?php echo esc_html($heading); ?>
                   </h2>
                 <?php endif; ?>
