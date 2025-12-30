@@ -28,9 +28,13 @@ function goodshep_enqueue_scripts() {
     wp_enqueue_style('poppins', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', [], null);
     wp_enqueue_style('roboto', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap', [], null);
 
-    if (IS_VITE_DEVELOPMENT) {
+    // Check for hot file to determine if we are in dev mode
+    $hot_file = get_template_directory() . '/hot';
+    $is_hot_dev = file_exists($hot_file);
+
+    if ($is_hot_dev) {
         // Development: Vite Dev Server (HMR)
-        $vite_server = goodshep_get_vite_server();
+        $vite_server = trim(file_get_contents($hot_file));
         wp_enqueue_script('vite-client', $vite_server . '/@vite/client', [], null, false);
         wp_enqueue_script('goodshep-main', $vite_server . '/src/main.js', ['jquery'], null, false);
     } else {
