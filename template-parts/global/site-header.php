@@ -21,7 +21,7 @@
 						<div class="hidden text-base md:block md:ml-6 xl:ml-8 xl:text-lg">In an emergency dial <a href="tel:000" class="underline text-body">000</a></div>
 					</div>
 					<div class="w-full flex flex-nowrap items-center justify-center px-0 py-3 gap-2 xl:py-1 xl:text-right xl:justify-end">
-						<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="inline-block text-purple bg-white border border-purple leading-none rounded-md text-sm font-medium no-underline hover:underline w-1/3 md:w-auto px-2 py-2 md:px-6 xl:py-3 xl:px-8 xl:text-xl text-center">
+						<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="hidden text-purple bg-white border border-purple leading-none rounded-md text-sm font-medium no-underline hover:underline w-1/3 md:w-auto px-2 py-2 md:px-6 xl:py-3 xl:px-8 xl:text-xl text-center">
 							<?php esc_html_e('Contact us', 'goodshep-theme'); ?>
 						</a>
 						<a href="<?php echo esc_url(home_url('/donate-now/')); ?>" target="_blank" class="inline-block text-white bg-purple border border-purple leading-none rounded-md text-sm font-medium no-underline hover:underline w-1/3 md:w-auto px-2 py-2 md:px-6 xl:py-3 xl:px-8 xl:text-xl text-center">
@@ -222,7 +222,7 @@
 
 			<!-- Mobile CTA Buttons (Optional: Added here for ease of access) -->
 			<div class="mt-8 pt-6 border-t border-gray-200 flex flex-col gap-4">
-				<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="block w-full text-purple bg-white border border-solid border-purple rounded-md text-center py-3 font-medium hover:bg-purple hover:text-white transition-colors">
+				<a href="<?php echo esc_url(home_url('/contact-us/')); ?>" class="hidden w-full text-purple bg-white border border-solid border-purple rounded-md text-center py-3 font-medium hover:bg-purple hover:text-white transition-colors">
 					<?php esc_html_e('Contact us', 'goodshep-theme'); ?>
 				</a>
 				<a href="<?php echo esc_url(home_url('/donate-now/')); ?>" class="block w-full text-white bg-purple border border-purple rounded-md text-center py-3 font-medium hover:bg-opacity-90 transition-colors">
