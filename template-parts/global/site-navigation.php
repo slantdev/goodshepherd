@@ -28,12 +28,12 @@ $menu_items_repeater = get_field('menu_items', 'option') ?? ''; // Repeater
             $submenu_type = get_sub_field('submenu_type') ?? ''; // megamenu or dropdown
 
             // Link Classes
-            $link_classes = 'parent--link font-semibold text-xl text-body no-underline flex px-4 py-[18px] gap-x-3 items-center group-hover:text-red focus:text-red transition-colors';
+            $link_classes = 'parent--link font-semibold text-lg 2xl:text-xl text-body no-underline flex px-4 py-[18px] gap-x-3 whitespace-nowrap items-center group-hover:text-red focus:text-red transition-colors';
 
             // Positioning Class (Megamenu needs static parent for full-width, Dropdown needs relative)
             $li_position_class = ($submenu_type === 'megamenu') ? 'static' : 'relative';
           ?>
-            <li class="menu--li pr-5 group <?php echo $li_position_class; ?>">
+            <li class="menu--li pr-4 group <?php echo $li_position_class; ?>">
               <a href="<?php echo esc_url($menu_item_url); ?>"
                 target="<?php echo esc_attr($menu_item_target); ?>"
                 class="<?php echo esc_attr($link_classes); ?>"
