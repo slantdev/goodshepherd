@@ -50,7 +50,7 @@ $bg_style      = goodshep_get_bg_image_style();
                 ?>
                     <div>
                         <a href="<?php echo esc_url($url); ?>" target="<?php echo esc_attr($target); ?>"
-                            class="inline-block bg-purple text-white font-bold py-3 px-8 rounded hover:bg-purple-700 transition-colors no-underline">
+                            class="inline-block bg-red text-white font-bold py-3 px-8 rounded hover:bg-red-800 transition-colors no-underline">
                             <?php echo esc_html($button_text); ?>
                         </a>
                     </div>
