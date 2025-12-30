@@ -3,6 +3,6 @@
 NOTES.md
 *.psd
 /references
-assets/images/
+#assets/images/
 hot
 *copy*
