@@ -44,7 +44,7 @@ $bg_style      = goodshep_get_bg_image_style();
     <?php if ($enable_filter && !empty($filters)) : ?>
       <div class="mb-12 flex flex-nowrap items-center justify-center gap-4 py-4 overflow-x-auto">
         <button type="button"
-          class="js-featured-filter-btn flex items-center gap-3 px-6 py-3 rounded-full bg-off-white shadow-sm text-default text-lg transition-all hover:shadow-md cursor-pointer active"
+          class="js-featured-filter-btn flex items-center gap-3 px-6 py-3 rounded-full bg-off-white shadow-sm text-default text-lg text-left transition-all hover:shadow-md cursor-pointer active"
           data-filter="all">
           <div class="inline-flex w-6 h-6 bg-white inset-shadow-sm/20 rounded-full items-center justify-center">
             <div class="active-indicator inline-block w-3 h-3 bg-blue rounded-full"></div>
@@ -57,9 +57,9 @@ $bg_style      = goodshep_get_bg_image_style();
           if (!$f_text) continue;
         ?>
           <button type="button"
-            class="js-featured-filter-btn flex items-center gap-3 px-6 py-3 rounded-full bg-off-white shadow-sm text-default text-lg transition-all hover:shadow-md cursor-pointer"
+            class="js-featured-filter-btn flex items-center gap-3 px-6 py-3 rounded-full bg-off-white shadow-sm text-default text-left text-lg transition-all hover:shadow-md cursor-pointer"
             data-filter="<?php echo esc_attr($f_slug); ?>">
-            <div class="inline-flex w-6 h-6 bg-white inset-shadow-sm/20 rounded-full items-center justify-center">
+            <div class="inline-flex w-6 h-6 bg-white inset-shadow-sm/20 rounded-full items-center justify-center shrink-0">
               <div class="active-indicator inline-block w-3 h-3 bg-transparent rounded-full invisible"></div>
             </div>
             <span><?php echo esc_html($f_text); ?></span>
