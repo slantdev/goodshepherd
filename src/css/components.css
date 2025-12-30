@@ -141,11 +141,6 @@
   @apply text-red -top-12;
 }
 
-:root {
-  --swiper-theme-color: #d72c32; /* gs_red */
-  --swiper-pagination-bullet-inactive-color: white;
-}
-
 /* ---------------------------------------------------------
    Timeline Page
    --------------------------------------------------------- */

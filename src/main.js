@@ -1,21 +1,22 @@
-import "./style.css";
-import "./css/global.css";
-import "./css/components.css";
-
 // Import Fancybox
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Import Swiper
-import Swiper from 'swiper';
-import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/effect-fade';
+import Swiper from "swiper";
+import { Navigation, Pagination, Autoplay, EffectFade } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
-import { initTimeline } from './js/page-timeline.js';
-import { initServiceLocator } from './js/page-service-locator.js';
+// Import Theme Style
+import "./style.css";
+import "./css/global.css";
+import "./css/components.css";
+
+import { initTimeline } from "./js/page-timeline.js";
+import { initServiceLocator } from "./js/page-service-locator.js";
 
 // Initialize Fancybox
 Fancybox.bind("[data-fancybox]", {
@@ -23,74 +24,76 @@ Fancybox.bind("[data-fancybox]", {
 });
 
 // Initialize Swiper
-document.addEventListener('DOMContentLoaded', () => {
-    // Timeline
-    initTimeline();
-    
-    // Service Locator
-    initServiceLocator();
+document.addEventListener("DOMContentLoaded", () => {
+  // Timeline
+  initTimeline();
 
-    // Hero Slider
-    const heroSliders = document.querySelectorAll('.hero-slider');
-    heroSliders.forEach(el => {
-        new Swiper(el, {
-            modules: [Navigation, Pagination, Autoplay, EffectFade],
-            loop: true,
-            effect: 'fade',
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: el.querySelector('.swiper-pagination'),
-                clickable: true,
-            },
-            navigation: {
-                nextEl: el.querySelector('.swiper-button-next'),
-                prevEl: el.querySelector('.swiper-button-prev'),
-            },
-        });
-    });
+  // Service Locator
+  initServiceLocator();
 
-    // Generic Swiper (exclude specific ones)
-    const swipers = document.querySelectorAll('.swiper:not(.hero-slider):not(.featured-filter-slider):not(.stats-slider)');
-    swipers.forEach((el) => {
-        new Swiper(el, {
-            modules: [Navigation, Pagination],
-            loop: true,
-            pagination: {
-                el: el.querySelector(".swiper-pagination"),
-                clickable: true,
-            },
-            navigation: {
-                nextEl: el.querySelector(".swiper-button-next"),
-                prevEl: el.querySelector(".swiper-button-prev"),
-            },
-        });
+  // Hero Slider
+  const heroSliders = document.querySelectorAll(".hero-slider");
+  heroSliders.forEach((el) => {
+    new Swiper(el, {
+      modules: [Navigation, Pagination, Autoplay, EffectFade],
+      loop: true,
+      effect: "fade",
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: el.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: el.querySelector(".swiper-button-next"),
+        prevEl: el.querySelector(".swiper-button-prev"),
+      },
     });
+  });
 
-    // Stats Slider
-    const statsSliders = document.querySelectorAll('.stats-slider');
-    statsSliders.forEach((el) => {
-        new Swiper(el, {
-            modules: [Pagination, Autoplay],
-            loop: true,
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: el.querySelector(".swiper-pagination"),
-                clickable: true,
-            },
-            breakpoints: {
-                0: { slidesPerView: 1, spaceBetween: 20 },
-                768: { slidesPerView: 3, spaceBetween: 0 }, // Border handling implies 0 space visually? Or keep space but use borders?
-                // If using borders between slides, spaceBetween 0 works best so borders touch.
-                1280: { slidesPerView: 5, spaceBetween: 0 },
-            },
-        });
+  // Generic Swiper (exclude specific ones)
+  const swipers = document.querySelectorAll(
+    ".swiper:not(.hero-slider):not(.featured-filter-slider):not(.stats-slider)"
+  );
+  swipers.forEach((el) => {
+    new Swiper(el, {
+      modules: [Navigation, Pagination],
+      loop: true,
+      pagination: {
+        el: el.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: el.querySelector(".swiper-button-next"),
+        prevEl: el.querySelector(".swiper-button-prev"),
+      },
     });
+  });
+
+  // Stats Slider
+  const statsSliders = document.querySelectorAll(".stats-slider");
+  statsSliders.forEach((el) => {
+    new Swiper(el, {
+      modules: [Pagination, Autoplay],
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: el.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      breakpoints: {
+        0: { slidesPerView: 1, spaceBetween: 20 },
+        768: { slidesPerView: 3, spaceBetween: 0 }, // Border handling implies 0 space visually? Or keep space but use borders?
+        // If using borders between slides, spaceBetween 0 works best so borders touch.
+        1280: { slidesPerView: 5, spaceBetween: 0 },
+      },
+    });
+  });
 
   // Search Toggle Logic
   const searchToggles = document.querySelectorAll(".js-search-toggle");
@@ -347,7 +350,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Featured with Filter Logic (Swiper)
-  const filterSections = document.querySelectorAll(".js-featured-filter-section");
+  const filterSections = document.querySelectorAll(
+    ".js-featured-filter-section"
+  );
   filterSections.forEach((section) => {
     const sliderEl = section.querySelector(".featured-filter-slider");
     if (!sliderEl) return;
@@ -356,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const swiper = new Swiper(sliderEl, {
       modules: [Navigation, Pagination],
       slidesPerView: 1,
-      spaceBetween: 30,
+      spaceBetween: 40,
       pagination: {
         el: sliderEl.querySelector(".swiper-pagination"),
         clickable: true,
@@ -377,40 +382,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filtering
     const filterBtns = section.querySelectorAll(".js-featured-filter-btn");
+
+    // Helper to update button states
+    const updateButtonState = (targetBtn) => {
+      filterBtns.forEach((btn) => {
+        const indicator = btn.querySelector(".active-indicator");
+        if (btn === targetBtn) {
+          // Active State
+          indicator.classList.remove("invisible", "bg-transparent");
+          indicator.classList.add("bg-blue");
+        } else {
+          // Inactive State
+          indicator.classList.add("invisible", "bg-transparent");
+          indicator.classList.remove("bg-blue");
+        }
+      });
+    };
+
+    // Initialize state (ensure 'all' or active is set)
+    const initialBtn =
+      section.querySelector(".js-featured-filter-btn.active") ||
+      section.querySelector('[data-filter="all"]');
+    if (initialBtn) updateButtonState(initialBtn);
+
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         const filter = btn.getAttribute("data-filter");
 
-        // Update Active Button
-        filterBtns.forEach((b) => {
-          b.classList.remove("bg-purple", "text-white");
-          b.classList.add("text-purple");
-        });
-        btn.classList.add("bg-purple", "text-white");
-        btn.classList.remove("text-purple");
+        // Update Buttons
+        updateButtonState(btn);
 
         // Filter Slides
         // Swiper stores slides in swiper.slides
         // We can hide/show them by manipulating the DOM element directly
         // Then call swiper.update()
-        
+
         let hasMatches = false;
-        
+
         swiper.slides.forEach((slide) => {
-            const categoriesStr = slide.getAttribute("data-categories") || "";
-            const categories = categoriesStr.split(" ");
-            
-            if (filter === "all" || categories.includes(filter)) {
-                slide.style.display = ""; // Show
-                hasMatches = true;
-            } else {
-                slide.style.display = "none"; // Hide
-            }
+          const categoriesStr = slide.getAttribute("data-categories") || "";
+          const categories = categoriesStr.split(" ");
+
+          if (filter === "all" || categories.includes(filter)) {
+            slide.style.display = ""; // Show
+            hasMatches = true;
+          } else {
+            slide.style.display = "none"; // Hide
+          }
         });
 
         // If no matches, maybe show a message? (Optional)
-        
+
         // Important: Update Swiper to re-calculate layout
         swiper.update();
         swiper.slideTo(0); // Reset to first slide
@@ -418,5 +441,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
 console.log("Main JS Loaded");

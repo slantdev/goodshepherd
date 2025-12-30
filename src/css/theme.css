@@ -1,5 +1,20 @@
+:root {
+  --swiper-theme-color: #d72c32;
+  --swiper-navigation-color: #d72c32;
+  --swiper-pagination-color: #d72c32;
+  --swiper-pagination-bullet-inactive-color: #e3e3e3;
+  --swiper-pagination-bullet-active-color: #d72c32;
+  --swiper-pagination-bullet-width: 12px;
+  --swiper-pagination-bullet-height: 12px;
+  --swiper-pagination-bullet-inactive-opacity: 0.6;
+  --swiper-pagination-bullet-horizontal-gap: 6px;
+  --swiper-navigation-size: 32px;
+  --swiper-navigation-sides-offset: 0px;
+}
+
 @theme {
-  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
   --color-red: #d72c32;
   --color-off-black: #231f20;
