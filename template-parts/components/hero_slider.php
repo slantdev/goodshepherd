@@ -41,10 +41,10 @@ $block_classes = goodshep_get_block_classes('relative p-0'); // Remove default p
 
             <!-- Content -->
             <div class="container mx-auto px-4 xl:px-32 relative z-10 h-full flex items-center">
-              <div class="max-w-4xl" style="<?php echo esc_attr($text_style); ?>">
+              <div class="max-w-200" style="<?php echo esc_attr($text_style); ?>">
 
                 <?php if ($heading) : ?>
-                  <h2 class="text-4xl md:text-5xl xl:text-[56px] font-bold mb-6 xl:mb-10 leading-tight text-inherit">
+                  <h2 class="text-4xl md:text-5xl xl:text-[56px] font-bold mb-6 xl:mb-10 leading-tight md:leading-tight xl:leading-tight text-inherit">
                     <?php echo esc_html($heading); ?>
                   </h2>
                 <?php endif; ?>
